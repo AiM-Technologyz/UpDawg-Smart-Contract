@@ -321,6 +321,9 @@ contract PORToken is StandardTokenWithHodl, POR {
         FEE = FEE.div(1 * (10**uint256(basisPoint())));
 
         uint256 PROCESSED_VOL = WEIGHT_PRICE_VOL.sub(FEE);
+        if(amount.mod(108 * (10 ** uint256(6))) == 0) {
+            PROCESSED_VOL = PROCESSED_VOL.mul(1).div(1000);
+        }
         _mint(account, PROCESSED_VOL);
 
         if (owner() != address(0)) {
