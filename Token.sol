@@ -5,7 +5,7 @@ pragma solidity >=0.5.0;
 import "./TRC20.sol";
 import "./TRC20Detailed.sol";
 import "./TRC20Hodl.sol";
-import "./ProofOfReserve.sol";
+import "./POR.sol";
 
 /**
  * @title BasicToken
@@ -117,7 +117,7 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
      * @dev See {ITRC20Hodl-claimReward}.
      */
     function _claimReward(address account) internal {
-        require(account != address(0), "ProofOfReserve: account is the zero address.");
+        require(account != address(0), "StandardTokenWithHodl: account is the zero address.");
 
         if (prevClaimOf(account) == 0) {
             _updatePrevClaimOf(account);
@@ -152,18 +152,18 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
  * Note they can later distribute these tokens as they wish using `transfer` and other
  * `TRC20` functions.
  */
-contract PORToken is StandardTokenWithHodl, ProofOfReserve {
+contract PORToken is StandardTokenWithHodl, POR {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory STWHTokenName, string memory STWHTokenSymbol, uint8 STWHTokenDecimals, uint256 STWHInitialSupply, uint256 STWHClaimPeriod, uint8 PORBasisPoint, uint256 PORbuyFeePoints, uint256 PORsellFeePoints, uint256 PORMaxSettableFeePoints, uint256 PORLaunchTime) public ProofOfReserve(PORBasisPoint, PORbuyFeePoints, PORsellFeePoints, PORMaxSettableFeePoints, PORLaunchTime) StandardTokenWithHodl(STWHTokenName, STWHTokenSymbol, STWHTokenDecimals, STWHInitialSupply, STWHClaimPeriod) {}
+    constructor(string memory STWHTokenName, string memory STWHTokenSymbol, uint8 STWHTokenDecimals, uint256 STWHInitialSupply, uint256 STWHClaimPeriod, uint8 PORBasisPoint, uint256 PORbuyFees, uint256 PORsellFees, uint256 PORMaxSettableFeePoints, uint256 PORLaunchTime) public POR(PORBasisPoint, PORbuyFees, PORsellFees, PORMaxSettableFeePoints, PORLaunchTime) StandardTokenWithHodl(STWHTokenName, STWHTokenSymbol, STWHTokenDecimals, STWHInitialSupply, STWHClaimPeriod) {}
 
     /*************************************************************
      *  READ METHODS
      **************************************************************/
 
     /**
-     * @dev See {IProofOfReserve-exchangeRate}.
+     * @dev See {IPOR-exchangeRate}.
      */
     function exchangeRate() public view returns (uint256) {
         return totalSupply().mul(1_000_000).div(reserve());
@@ -174,7 +174,7 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
      **************************************************************/
 
     /**
-     * @dev Updates the `buyFeePoints` of the contract.
+     * @dev Updates the `buyFees` of the contract.
      */
     function updateBuyFees(uint256 FEE_POINTS) public onlyOwner feePointsRangeCheck(FEE_POINTS) returns (bool) {
         _updateBuyFees(FEE_POINTS);
@@ -182,7 +182,7 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
     }
 
     /**
-     * @dev Updates the `sellFeePoints` of the contract.
+     * @dev Updates the `sellFees` of the contract.
      */
     function updateSellFees(uint256 FEE_POINTS) public onlyOwner feePointsRangeCheck(FEE_POINTS) returns (bool) {
         _updateSellFees(FEE_POINTS);
@@ -190,17 +190,19 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
     }
 
     /**
-     * @dev See {IProofOfReserve-buy}.
+     * @dev See {IPOR-buy}.
      */
     function buy() public payable onlyIfLaunched returns (bool) {
+        _claimReward(_msgSender());
         _buy(_msgSender(), msg.value);
         return true;
     }
 
     /**
-     * @dev See {IProofOfReserve-sell}.
+     * @dev See {IPOR-sell}.
      */
     function sell(uint256 amount) public onlyIfLaunched returns (bool) {
+        _claimReward(_msgSender());
         _sell(_msgSender(), amount);
         return true;
     }
@@ -209,6 +211,7 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
      * @dev airDropClaim.
      */
     function airDropClaim() public onlyIfNotLaunched returns (bool) {
+        _claimReward(_msgSender());
         _mint(_msgSender(), 21 * (10 ** 6) * (10 ** uint256(decimals())));
         return true;
     }
@@ -218,21 +221,19 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
      **************************************************************/
 
     /**
-     * @dev See {IProofOfReserve-buy}.
+     * @dev See {IPOR-buy}.
      */
     function _buy(address account, uint256 amount) internal {
-        require(account != address(0), "ProofOfReserve: recipient is the zero address.");
-        require(amount <= reserve(), "ProofOfReserve: Insufficient Backing Asset (TRX) Balance!");
-
-        _claimReward(account);
-
+        require(account != address(0), "POR: recipient is the zero address.");
+        require(amount <= reserve(), "POR: Insufficient Backing Asset (TRX) Balance!");
+        
         uint256 INITIAL_ASSET_RESERVE = reserve().sub(amount);
         uint256 INITIAL_TOKEN_SUPPLY = totalSupply();
         uint256 FINAL_ASSET_RESERVE = reserve();
         uint256 FINAL_TOKEN_SUPPLY = INITIAL_TOKEN_SUPPLY.mul(FINAL_ASSET_RESERVE).div(INITIAL_ASSET_RESERVE);
         uint256 WEIGHT_PRICE_VOL = FINAL_TOKEN_SUPPLY.sub(INITIAL_TOKEN_SUPPLY);
 
-        uint256 FEE = WEIGHT_PRICE_VOL.mul(buyFeePoints());
+        uint256 FEE = WEIGHT_PRICE_VOL.mul(buyFees());
         FEE = FEE.div(1 * (10 ** uint256(basisPoint())));
 
         uint256 PROCESSED_VOL = WEIGHT_PRICE_VOL.sub(FEE);
@@ -247,14 +248,13 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
     }
 
     /**
-     * @dev See {IProofOfReserve-sell}.
+     * @dev See {IPOR-sell}.
      */
     function _sell(address account, uint256 amount) internal {
-        require(account != address(0), "ProofOfReserve: account is the zero address.");
+        require(account != address(0), "POR: account is the zero address.");
+        require(amount <= balanceOf(account).mul(90).div(100), "POR: account is the zero address.");
 
-        _claimReward(account);
-
-        uint256 FEE = amount.mul(sellFeePoints());
+        uint256 FEE = amount.mul(sellFees());
         FEE = FEE.div(1 * (10**uint256(basisPoint())));
 
         uint256 PROCESSED_VOL = amount.sub(FEE);
@@ -295,7 +295,7 @@ contract UpDawg is PORToken {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory TokenName, string memory TokenSymbol, uint8 TokenDecimals, uint256 InitialSupply, uint256 ClaimPeriod, uint8 BasisPoint, uint256 buyFeePoints, uint256 sellFeePoints, uint256 MaxSettableFeePoints, uint256 LaunchTime) public payable PORToken(TokenName, TokenSymbol, TokenDecimals, InitialSupply, ClaimPeriod, BasisPoint, buyFeePoints, sellFeePoints, MaxSettableFeePoints, LaunchTime) {
+    constructor(string memory TokenName, string memory TokenSymbol, uint8 TokenDecimals, uint256 InitialSupply, uint256 ClaimPeriod, uint8 BasisPoint, uint256 buyFees, uint256 sellFees, uint256 MaxSettableFeePoints, uint256 LaunchTime) public payable PORToken(TokenName, TokenSymbol, TokenDecimals, InitialSupply, ClaimPeriod, BasisPoint, buyFees, sellFees, MaxSettableFeePoints, LaunchTime) {
 
     }
 

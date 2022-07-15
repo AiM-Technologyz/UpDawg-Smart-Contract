@@ -19,19 +19,19 @@ interface IPOR {
 
     /**
      * @dev Returns the number of basis Points used by the contract as ratio representation.
-     * For example, if `basisPoint` equals `3`, a `buyFeePoints` of `25` represents a
+     * For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a
      * buy fee of 2.5% (per cent or percentage) and should
      * be displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).     
      */
     function basisPoint() external view returns (uint8);
 
     /**
-     * @dev Returns the buyFeePoints of the contract.
-     * For example, if `basisPoint` equals `3`, a `buyFeePoints` of `25` represents a
+     * @dev Returns the buyFees of the contract.
+     * For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a
      * buy fee of 2.5% (per cent or percentage) and should
-     * be displayed to a user as `2.5%` by the formula (buyFeePoints * 100/ (10 ** basisPoint)).
+     * be displayed to a user as `2.5%` by the formula (buyFees * 100/ (10 ** basisPoint)).
      */
-    function buyFeePoints() external view returns (uint256);
+    function buyFees() external view returns (uint256);
 
     /**
      * @dev Returns the sellFees of the contract.
@@ -156,9 +156,9 @@ contract POR is IPOR {
     }
 
     /**
-     * @dev See {IPOR-buyFeePoints}.
+     * @dev See {IPOR-buyFees}.
      */
-    function buyFeePoints() public view returns (uint256) {
+    function buyFees() public view returns (uint256) {
         return BUY_FEES;
     }
 
@@ -181,7 +181,7 @@ contract POR is IPOR {
     **************************************************************/
 
     /**
-     * @dev Updates the `buyFeePoints` of the contract.
+     * @dev Updates the `buyFees` of the contract.
      */
     function _updateBuyFees(uint256 FEE_POINTS) internal {
         BUY_FEES = FEE_POINTS;

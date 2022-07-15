@@ -9,7 +9,7 @@ import "./TRC20.sol";
 interface ITRC20Hodl {
 
     /**
-     * @dev Returns the amount of hodler pool tokens in existence.
+     * @dev Returns the amount of tokens locked in the contracts hodler`s pool.
      */
     function hodlSupply() external view returns (uint256);
 
@@ -23,6 +23,20 @@ interface ITRC20Hodl {
      */
     function prevClaimOf(address account) external view returns (uint256);
     
+    /*************************************************************
+     *  WRITE METHODS
+    **************************************************************/
+
+    /**
+     * @dev See {ITRC20Hodl-claimReward}.
+     */
+    function claimReward() external returns (bool);
+
+    /**
+     * @dev See {ITRC20Hodl-donateReward}.
+     */
+    function donateReward(uint256 amount) external returns (bool);
+
     /*************************************************************
      *  EVENT METHODS
     **************************************************************/
@@ -50,8 +64,8 @@ contract TRC20Hodl is ITRC20Hodl {
     uint256 private _hodlSupply;
 
     /**
-     * @dev Sets the values for `claimPeriod`, `symbol`, and `decimals`. All three of
-     * these values are immutable: they can only be set once during
+     * @dev Sets the values for `claimPeriod`.
+     * the value is immutable: it can only be set once during
      * construction.
      */
     constructor (uint256 claim_Period) internal {
@@ -86,6 +100,16 @@ contract TRC20Hodl is ITRC20Hodl {
     /*************************************************************
      *  WRITE METHODS
     **************************************************************/
+
+    /**
+     * @dev See {ITRC20Hodl-claimReward}.
+     */
+    function claimReward() public returns (bool);
+
+    /**
+     * @dev See {ITRC20Hodl-donateReward}.
+     */
+    function donateReward(uint256 amount) public returns (bool);
 
     /*************************************************************
      *  INTERNAL METHODS
