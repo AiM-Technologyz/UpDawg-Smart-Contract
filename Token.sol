@@ -20,8 +20,8 @@ contract BasicToken is TRC20 {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(uint256 TRC20InitialSupply) public {
-        _mint(_msgSender(), TRC20InitialSupply);
+    constructor(uint256 BasicTokenInitialSupply) public {
+        _mint(_msgSender(), BasicTokenInitialSupply);
     }
 }
 
@@ -33,9 +33,22 @@ contract StandardToken is BasicToken, TRC20Detailed {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory TRC20DetailedTokenName, string memory TRC20DetailedTokenSymbol, uint8 TRC20DetailedTokenDecimals, uint256 BasicTokenInitialSupply) public TRC20Detailed(TRC20DetailedTokenName, TRC20DetailedTokenSymbol, TRC20DetailedTokenDecimals) BasicToken(BasicTokenInitialSupply * (10 ** uint256(TRC20DetailedTokenDecimals))) {
-
-    }
+    constructor(
+        string memory TRC20DetailedTokenName,
+        string memory TRC20DetailedTokenSymbol,
+        uint8 TRC20DetailedTokenDecimals,
+        uint256 BasicTokenInitialSupply
+    )
+        public
+        TRC20Detailed(
+            TRC20DetailedTokenName,
+            TRC20DetailedTokenSymbol,
+            TRC20DetailedTokenDecimals
+        )
+        BasicToken(
+            BasicTokenInitialSupply * (10**uint256(TRC20DetailedTokenDecimals))
+        )
+    {}
 }
 
 /**
@@ -46,13 +59,26 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory StandardTokenTokenName, string memory StandardTokenTokenSymbol, uint8 StandardTokenTokenDecimals, uint256 StandardTokenInitialSupply, uint256 TRC20HodlClaimPeriod) public TRC20Hodl(TRC20HodlClaimPeriod) StandardToken(StandardTokenTokenName, StandardTokenTokenSymbol, StandardTokenTokenDecimals, StandardTokenInitialSupply) {
-        
-    }
+    constructor(
+        string memory StandardTokenTokenName,
+        string memory StandardTokenTokenSymbol,
+        uint8 StandardTokenTokenDecimals,
+        uint256 StandardTokenInitialSupply,
+        uint256 TRC20HodlClaimPeriod
+    )
+        public
+        TRC20Hodl(TRC20HodlClaimPeriod)
+        StandardToken(
+            StandardTokenTokenName,
+            StandardTokenTokenSymbol,
+            StandardTokenTokenDecimals,
+            StandardTokenInitialSupply
+        )
+    {}
 
     /*************************************************************
      *  READ METHODS
-    **************************************************************/
+     **************************************************************/
 
     /**
      * @dev See {ITRC20-totalSupply}.
@@ -69,9 +95,17 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
      * @dev See {ITRC20-transfer}.
      */
     function transfer(address recipient, uint256 amount) public returns (bool) {
-        (uint256 reward, uint256 inflation) = _claimReward(_msgSender(), balanceOf(_msgSender()), totalSupply());
+        (uint256 reward, uint256 inflation) = _claimReward(
+            _msgSender(),
+            balanceOf(_msgSender()),
+            totalSupply()
+        );
         _mint(_msgSender(), reward.add(inflation));
-        (uint256 reward2, uint256 inflation2) = _claimReward(recipient, balanceOf(recipient), totalSupply());
+        (uint256 reward2, uint256 inflation2) = _claimReward(
+            recipient,
+            balanceOf(recipient),
+            totalSupply()
+        );
         _mint(recipient, reward2.add(inflation2));
         _transfer(_msgSender(), recipient, amount);
         return true;
@@ -80,21 +114,48 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
     /**
      * @dev See {ITRC20-transferFrom}.
      */
-    function transferFrom(address sender, address recipient, uint256 amount) public returns (bool) {
-        (uint256 reward, uint256 inflation) = _claimReward(sender, balanceOf(sender), totalSupply());
+    function transferFrom(
+        address sender,
+        address recipient,
+        uint256 amount
+    ) public returns (bool) {
+        (uint256 reward, uint256 inflation) = _claimReward(
+            sender,
+            balanceOf(sender),
+            totalSupply()
+        );
         _mint(sender, reward.add(inflation));
-        (uint256 reward2, uint256 inflation2) = _claimReward(recipient, balanceOf(recipient), totalSupply());
+        (uint256 reward2, uint256 inflation2) = _claimReward(
+            recipient,
+            balanceOf(recipient),
+            totalSupply()
+        );
         _mint(recipient, reward2.add(inflation2));
         _transfer(sender, recipient, amount);
-        _approve(sender, _msgSender(), allowance(sender, _msgSender()).sub(amount));
+        _approve(
+            sender,
+            _msgSender(),
+            allowance(sender, _msgSender()).sub(amount)
+        );
         return true;
     }
 
     /**
      * @dev See {ITRC20Hodl-claimReward}.
      */
-    function claimReward() public returns (bool, uint256, uint256) {
-        (uint256 reward, uint256 inflation) = _claimReward(_msgSender(), balanceOf(_msgSender()), totalSupply());
+    function claimReward()
+        public
+        returns (
+            bool,
+            uint256,
+            uint256
+        )
+    {
+        (uint256 reward, uint256 inflation) = _claimReward(
+            _msgSender(),
+            balanceOf(_msgSender()),
+            totalSupply()
+        );
         _mint(_msgSender(), reward.add(inflation));
         return (true, reward, inflation);
     }
@@ -120,7 +181,36 @@ contract PORToken is StandardTokenWithHodl, POR {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory STWHTokenName, string memory STWHTokenSymbol, uint8 STWHTokenDecimals, uint256 STWHInitialSupply, uint256 STWHClaimPeriod, uint8 PORBasisPoint, uint256 PORbuyFees, uint256 PORsellFees, uint256 PORMaxSettableFeePoints, uint256 PORLaunchTime) public POR(PORBasisPoint, PORbuyFees, PORsellFees, PORMaxSettableFeePoints, PORLaunchTime) StandardTokenWithHodl(STWHTokenName, STWHTokenSymbol, STWHTokenDecimals, STWHInitialSupply, STWHClaimPeriod) {}
+    constructor(
+        string memory STWHTokenName,
+        string memory STWHTokenSymbol,
+        uint8 STWHTokenDecimals,
+        uint256 STWHInitialSupply,
+        uint256 STWHClaimPeriod,
+        uint8 PORBasisPoint,
+        uint256 PORbuyFees,
+        uint256 PORsellFees,
+        uint256 PORMaxFees,
+        uint256 PORMinFees,
+        uint256 PORLaunchTime
+    )
+        public
+        POR(
+            PORBasisPoint,
+            PORbuyFees,
+            PORsellFees,
+            PORMaxFees,
+            PORMinFees,
+            PORLaunchTime
+        )
+        StandardTokenWithHodl(
+            STWHTokenName,
+            STWHTokenSymbol,
+            STWHTokenDecimals,
+            STWHInitialSupply,
+            STWHClaimPeriod
+        )
+    {}
 
     /*************************************************************
      *  READ METHODS
@@ -140,7 +230,12 @@ contract PORToken is StandardTokenWithHodl, POR {
     /**
      * @dev Updates the `buyFees` of the contract.
      */
-    function updateBuyFees(uint256 FEE_POINTS) public onlyOwner feePointsRangeCheck(FEE_POINTS) returns (bool) {
+    function updateBuyFees(uint256 FEE_POINTS)
+        public
+        onlyOwner
+        feePointsRangeCheck(FEE_POINTS)
+        returns (bool)
+    {
         _updateBuyFees(FEE_POINTS);
         return true;
     }
@@ -148,7 +243,12 @@ contract PORToken is StandardTokenWithHodl, POR {
     /**
      * @dev Updates the `sellFees` of the contract.
      */
-    function updateSellFees(uint256 FEE_POINTS) public onlyOwner feePointsRangeCheck(FEE_POINTS) returns (bool) {
+    function updateSellFees(uint256 FEE_POINTS)
+        public
+        onlyOwner
+        feePointsRangeCheck(FEE_POINTS)
+        returns (bool)
+    {
         _updateSellFees(FEE_POINTS);
         return true;
     }
@@ -157,7 +257,11 @@ contract PORToken is StandardTokenWithHodl, POR {
      * @dev See {IPOR-buy}.
      */
     function buy() public payable onlyIfLaunched returns (bool) {
-        (uint256 reward, uint256 inflation) = _claimReward(_msgSender(), balanceOf(_msgSender()), totalSupply());
+        (uint256 reward, uint256 inflation) = _claimReward(
+            _msgSender(),
+            balanceOf(_msgSender()),
+            totalSupply()
+        );
         _mint(_msgSender(), reward.add(inflation));
         _buy(_msgSender(), msg.value);
         return true;
@@ -167,7 +271,11 @@ contract PORToken is StandardTokenWithHodl, POR {
      * @dev See {IPOR-sell}.
      */
     function sell(uint256 amount) public onlyIfLaunched returns (bool) {
-        (uint256 reward, uint256 inflation) = _claimReward(_msgSender(), balanceOf(_msgSender()), totalSupply());
+        (uint256 reward, uint256 inflation) = _claimReward(
+            _msgSender(),
+            balanceOf(_msgSender()),
+            totalSupply()
+        );
         _mint(_msgSender(), reward.add(inflation));
         _sell(_msgSender(), amount);
         return true;
@@ -177,9 +285,13 @@ contract PORToken is StandardTokenWithHodl, POR {
      * @dev airDropClaim.
      */
     function airDropClaim() public onlyIfNotLaunched returns (bool) {
-        (uint256 reward, uint256 inflation) = _claimReward(_msgSender(), balanceOf(_msgSender()), totalSupply());
+        (uint256 reward, uint256 inflation) = _claimReward(
+            _msgSender(),
+            balanceOf(_msgSender()),
+            totalSupply()
+        );
         _mint(_msgSender(), reward.add(inflation));
-        _mint(_msgSender(), 21 * (10 ** 6) * (10 ** uint256(decimals())));
+        _mint(_msgSender(), 21 * (10**6) * (10**uint256(decimals())));
         return true;
     }
 
@@ -192,22 +304,31 @@ contract PORToken is StandardTokenWithHodl, POR {
      */
     function _buy(address account, uint256 amount) internal {
         require(account != address(0), "POR: recipient is the zero address.");
-        require(amount <= reserve(), "POR: Insufficient Backing Asset (TRX) Balance!");
-        
+        require(
+            amount <= reserve(),
+            "POR: Insufficient Backing Asset (TRX) Balance!"
+        );
+
         uint256 INITIAL_ASSET_RESERVE = reserve().sub(amount);
         uint256 INITIAL_TOKEN_SUPPLY = totalSupply();
         uint256 FINAL_ASSET_RESERVE = reserve();
-        uint256 FINAL_TOKEN_SUPPLY = INITIAL_TOKEN_SUPPLY.mul(FINAL_ASSET_RESERVE).div(INITIAL_ASSET_RESERVE);
+        uint256 FINAL_TOKEN_SUPPLY = INITIAL_TOKEN_SUPPLY
+            .mul(FINAL_ASSET_RESERVE)
+            .div(INITIAL_ASSET_RESERVE);
         uint256 WEIGHT_PRICE_VOL = FINAL_TOKEN_SUPPLY.sub(INITIAL_TOKEN_SUPPLY);
 
         uint256 FEE = WEIGHT_PRICE_VOL.mul(buyFees());
-        FEE = FEE.div(1 * (10 ** uint256(basisPoint())));
+        FEE = FEE.div(1 * (10**uint256(basisPoint())));
 
         uint256 PROCESSED_VOL = WEIGHT_PRICE_VOL.sub(FEE);
         _mint(account, PROCESSED_VOL);
-        
+
         if (owner() != address(0)) {
-            (uint256 reward, uint256 inflation) = _claimReward(owner(), balanceOf(owner()), totalSupply());
+            (uint256 reward, uint256 inflation) = _claimReward(
+                owner(),
+                balanceOf(owner()),
+                totalSupply()
+            );
             _mint(owner(), (FEE.mul(3).div(5)).add(reward).add(inflation));
         }
         _mintHodl(FEE.div(5));
@@ -219,7 +340,10 @@ contract PORToken is StandardTokenWithHodl, POR {
      */
     function _sell(address account, uint256 amount) internal {
         require(account != address(0), "POR: account is the zero address.");
-        require(amount <= balanceOf(account).mul(90).div(100), "POR: account is the zero address.");
+        require(
+            amount <= balanceOf(account).mul(90).div(100),
+            "POR: account is the zero address."
+        );
 
         uint256 FEE = amount.mul(sellFees());
         FEE = FEE.div(1 * (10**uint256(basisPoint())));
@@ -229,14 +353,20 @@ contract PORToken is StandardTokenWithHodl, POR {
         uint256 INITIAL_ASSET_RESERVE = reserve();
         uint256 INITIAL_TOKEN_SUPPLY = totalSupply();
         uint256 FINAL_TOKEN_SUPPLY = INITIAL_TOKEN_SUPPLY.sub(PROCESSED_VOL);
-        uint256 FINAL_ASSET_RESERVE = FINAL_TOKEN_SUPPLY.mul(INITIAL_ASSET_RESERVE).div(INITIAL_TOKEN_SUPPLY);
+        uint256 FINAL_ASSET_RESERVE = FINAL_TOKEN_SUPPLY
+            .mul(INITIAL_ASSET_RESERVE)
+            .div(INITIAL_TOKEN_SUPPLY);
         uint256 sell_AMT = INITIAL_ASSET_RESERVE.sub(FINAL_ASSET_RESERVE);
 
         uint256 BURN_VOL = FEE.mul(2).div(4);
         BURN_VOL = BURN_VOL.add(PROCESSED_VOL);
 
         if (owner() != address(0)) {
-            (uint256 reward, uint256 inflation) = _claimReward(owner(), balanceOf(owner()), totalSupply());
+            (uint256 reward, uint256 inflation) = _claimReward(
+                owner(),
+                balanceOf(owner()),
+                totalSupply()
+            );
             _mint(owner(), reward.add(inflation));
             _transfer(account, owner(), FEE.mul(3).div(5));
         } else {
@@ -260,8 +390,33 @@ contract UpDawg is PORToken {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory TokenName, string memory TokenSymbol, uint8 TokenDecimals, uint256 InitialSupply, uint256 ClaimPeriod, uint8 BasisPoint, uint256 buyFees, uint256 sellFees, uint256 MaxSettableFeePoints, uint256 LaunchTime) public payable PORToken(TokenName, TokenSymbol, TokenDecimals, InitialSupply, ClaimPeriod, BasisPoint, buyFees, sellFees, MaxSettableFeePoints, LaunchTime) {
-
-    }
-
+    constructor(
+        string memory TokenName,
+        string memory TokenSymbol,
+        uint8 TokenDecimals,
+        uint256 InitialSupply,
+        uint256 ClaimPeriod,
+        uint8 BasisPoint,
+        uint256 BuyFees,
+        uint256 SellFees,
+        uint256 MaxFees,
+        uint256 MinFees,
+        uint256 LaunchTime
+    )
+        public
+        payable
+        PORToken(
+            TokenName,
+            TokenSymbol,
+            TokenDecimals,
+            InitialSupply,
+            ClaimPeriod,
+            BasisPoint,
+            BuyFees,
+            SellFees,
+            MaxFees,
+            MinFees,
+            LaunchTime
+        )
+    {}
 }

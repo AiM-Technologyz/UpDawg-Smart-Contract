@@ -49,6 +49,14 @@ interface IPOR {
      */
     function maxFees() external view returns (uint256);
 
+    /**
+     * @dev Returns the minFees of the contract.
+     * For example, if `basisPoint` equals `3`, a `minFees` of `25` represents a
+     * max settable fee of 2.5% (per cent or percentage) and should
+     * be displayed to a user as `2.5%` by the formula (minFees * 100/ (10 ** basisPoint)).
+     */
+    function minFees() external view returns (uint256);
+
     /*************************************************************
      *  WRITE METHODS
     **************************************************************/
@@ -94,6 +102,8 @@ contract POR is IPOR {
 
     uint256 private MAX_FEES;
 
+    uint256 private MIN_FEES;
+
     uint256 private LAUNCH_TIME;
 
     /**
@@ -101,11 +111,12 @@ contract POR is IPOR {
      * these values are immutable: they can only be set once during
      * construction.
      */
-    constructor (uint8 POR_BASIS_POINT, uint256 POR_BUY_FEES, uint256 POR_SELL_FEES, uint256 POR_MAX_FEES, uint256 LAUNCHTIME) internal {
+    constructor (uint8 POR_BASIS_POINT, uint256 POR_BUY_FEES, uint256 POR_SELL_FEES, uint256 POR_MAX_FEES, uint256 POR_MIN_FEES, uint256 LAUNCHTIME) internal {
         BASIS_POINT = POR_BASIS_POINT;
         BUY_FEES = POR_BUY_FEES;
         SELL_FEES = POR_SELL_FEES;
         MAX_FEES = POR_MAX_FEES;
+        MIN_FEES = POR_MIN_FEES;
         LAUNCH_TIME = LAUNCHTIME;
     }
 
@@ -130,10 +141,11 @@ contract POR is IPOR {
     }
 
     /**
-     * @dev Throws if `FEE_POINTS` exceeds `maxFees`.
+     * @dev Throws if `FEE_POINTS` is greater than `maxFees` or less than `minFees`.
      */
     modifier feePointsRangeCheck(uint256 FEE_POINTS) {
-        require(maxFees() >= FEE_POINTS, "POR: FEE_POINTS out of range error.");
+        require(FEE_POINTS <= maxFees(), "POR Out_Of_Range ERROR: FEE_POINTS is greater than `maxFees`.");
+        require(FEE_POINTS >= minFees(), "POR Out_Of_Range ERROR: FEE_POINTS is less than `minFees`.");
         _;
     }
 
@@ -175,7 +187,38 @@ contract POR is IPOR {
     function maxFees() public view returns (uint256) {
         return MAX_FEES;
     }
+
+    /**
+     * @dev See {IPOR-minFees}.
+     */
+    function minFees() public view returns (uint256) {
+        return MIN_FEES;
+    }
     
+    /*************************************************************
+     *  WRITE METHODS
+     **************************************************************/
+
+    /**
+     * @dev Updates the `buyFees` of the contract.
+     */
+    function updateBuyFees(uint256 FEE_POINTS) public returns (bool);
+
+    /**
+     * @dev Updates the `sellFees` of the contract.
+     */
+    function updateSellFees(uint256 FEE_POINTS) public returns (bool);
+
+    /**
+     * @dev See {IPOR-buy}.
+     */
+    function buy() public payable returns (bool);
+
+    /**
+     * @dev See {IPOR-sell}.
+     */
+    function sell(uint256 amount) public returns (bool);
+
     /*************************************************************
      *  INTERNAL METHODS
     **************************************************************/
