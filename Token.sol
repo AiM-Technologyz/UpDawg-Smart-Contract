@@ -156,7 +156,7 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory STWHTokenName, string memory STWHTokenSymbol, uint8 STWHTokenDecimals, uint256 STWHInitialSupply, uint256 STWHClaimPeriod, uint8 PORBasisPoint, uint256 PORDepositFeePoints, uint256 PORWithdrawFeePoints, uint256 PORMaxSettableFeePoints, uint256 PORLaunchTime) public ProofOfReserve(PORBasisPoint, PORDepositFeePoints, PORWithdrawFeePoints, PORMaxSettableFeePoints, PORLaunchTime) StandardTokenWithHodl(STWHTokenName, STWHTokenSymbol, STWHTokenDecimals, STWHInitialSupply, STWHClaimPeriod) {}
+    constructor(string memory STWHTokenName, string memory STWHTokenSymbol, uint8 STWHTokenDecimals, uint256 STWHInitialSupply, uint256 STWHClaimPeriod, uint8 PORBasisPoint, uint256 PORbuyFeePoints, uint256 PORsellFeePoints, uint256 PORMaxSettableFeePoints, uint256 PORLaunchTime) public ProofOfReserve(PORBasisPoint, PORbuyFeePoints, PORsellFeePoints, PORMaxSettableFeePoints, PORLaunchTime) StandardTokenWithHodl(STWHTokenName, STWHTokenSymbol, STWHTokenDecimals, STWHInitialSupply, STWHClaimPeriod) {}
 
     /*************************************************************
      *  READ METHODS
@@ -174,34 +174,34 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
      **************************************************************/
 
     /**
-     * @dev Updates the `depositFeePoints` of the contract.
+     * @dev Updates the `buyFeePoints` of the contract.
      */
-    function updateDepositFeePoints(uint256 FEE_POINTS) public onlyOwner feePointsRangeCheck(FEE_POINTS) returns (bool) {
-        _updateDepositFeePoints(FEE_POINTS);
+    function updateBuyFees(uint256 FEE_POINTS) public onlyOwner feePointsRangeCheck(FEE_POINTS) returns (bool) {
+        _updateBuyFees(FEE_POINTS);
         return true;
     }
 
     /**
-     * @dev Updates the `withdrawFeePoints` of the contract.
+     * @dev Updates the `sellFeePoints` of the contract.
      */
-    function updateWithdrawFeePoints(uint256 FEE_POINTS) public onlyOwner feePointsRangeCheck(FEE_POINTS) returns (bool) {
-        _updateWithdrawFeePoints(FEE_POINTS);
+    function updateSellFees(uint256 FEE_POINTS) public onlyOwner feePointsRangeCheck(FEE_POINTS) returns (bool) {
+        _updateSellFees(FEE_POINTS);
         return true;
     }
 
     /**
-     * @dev See {IProofOfReserve-deposit}.
+     * @dev See {IProofOfReserve-buy}.
      */
-    function deposit() public payable onlyIfLaunched returns (bool) {
-        _deposit(_msgSender(), msg.value);
+    function buy() public payable onlyIfLaunched returns (bool) {
+        _buy(_msgSender(), msg.value);
         return true;
     }
 
     /**
-     * @dev See {IProofOfReserve-withdraw}.
+     * @dev See {IProofOfReserve-sell}.
      */
-    function withdraw(uint256 amount) public onlyIfLaunched returns (bool) {
-        _withdraw(_msgSender(), amount);
+    function sell(uint256 amount) public onlyIfLaunched returns (bool) {
+        _sell(_msgSender(), amount);
         return true;
     }
 
@@ -218,9 +218,9 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
      **************************************************************/
 
     /**
-     * @dev See {IProofOfReserve-deposit}.
+     * @dev See {IProofOfReserve-buy}.
      */
-    function _deposit(address account, uint256 amount) internal {
+    function _buy(address account, uint256 amount) internal {
         require(account != address(0), "ProofOfReserve: recipient is the zero address.");
         require(amount <= reserve(), "ProofOfReserve: Insufficient Backing Asset (TRX) Balance!");
 
@@ -232,7 +232,7 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
         uint256 FINAL_TOKEN_SUPPLY = INITIAL_TOKEN_SUPPLY.mul(FINAL_ASSET_RESERVE).div(INITIAL_ASSET_RESERVE);
         uint256 WEIGHT_PRICE_VOL = FINAL_TOKEN_SUPPLY.sub(INITIAL_TOKEN_SUPPLY);
 
-        uint256 FEE = WEIGHT_PRICE_VOL.mul(depositFeePoints());
+        uint256 FEE = WEIGHT_PRICE_VOL.mul(buyFeePoints());
         FEE = FEE.div(1 * (10 ** uint256(basisPoint())));
 
         uint256 PROCESSED_VOL = WEIGHT_PRICE_VOL.sub(FEE);
@@ -247,14 +247,14 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
     }
 
     /**
-     * @dev See {IProofOfReserve-withdraw}.
+     * @dev See {IProofOfReserve-sell}.
      */
-    function _withdraw(address account, uint256 amount) internal {
+    function _sell(address account, uint256 amount) internal {
         require(account != address(0), "ProofOfReserve: account is the zero address.");
 
         _claimReward(account);
 
-        uint256 FEE = amount.mul(withdrawFeePoints());
+        uint256 FEE = amount.mul(sellFeePoints());
         FEE = FEE.div(1 * (10**uint256(basisPoint())));
 
         uint256 PROCESSED_VOL = amount.sub(FEE);
@@ -263,7 +263,7 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
         uint256 INITIAL_TOKEN_SUPPLY = totalSupply();
         uint256 FINAL_TOKEN_SUPPLY = INITIAL_TOKEN_SUPPLY.sub(PROCESSED_VOL);
         uint256 FINAL_ASSET_RESERVE = FINAL_TOKEN_SUPPLY.mul(INITIAL_ASSET_RESERVE).div(INITIAL_TOKEN_SUPPLY);
-        uint256 WITHDRAW_AMT = INITIAL_ASSET_RESERVE.sub(FINAL_ASSET_RESERVE);
+        uint256 sell_AMT = INITIAL_ASSET_RESERVE.sub(FINAL_ASSET_RESERVE);
 
         uint256 BURN_VOL = FEE.mul(2).div(4);
         BURN_VOL = BURN_VOL.add(PROCESSED_VOL);
@@ -278,9 +278,9 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
         _mintHodl(FEE.div(5));
 
         address payable PAY_ACCOUNT = address(uint160(account));
-        PAY_ACCOUNT.transfer(WITHDRAW_AMT);
-        //PAY_ACCOUNT.call().value(WITHDRAW_AMT)();
-        emit AssetTransfer(address(this), account, WITHDRAW_AMT);
+        PAY_ACCOUNT.transfer(sell_AMT);
+        //PAY_ACCOUNT.call().value(sell_AMT)();
+        emit AssetTransfer(address(this), account, sell_AMT);
     }
 }
 
@@ -295,7 +295,7 @@ contract UpDawg is PORToken {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory TokenName, string memory TokenSymbol, uint8 TokenDecimals, uint256 InitialSupply, uint256 ClaimPeriod, uint8 BasisPoint, uint256 DepositFeePoints, uint256 WithdrawFeePoints, uint256 MaxSettableFeePoints, uint256 LaunchTime) public payable PORToken(TokenName, TokenSymbol, TokenDecimals, InitialSupply, ClaimPeriod, BasisPoint, DepositFeePoints, WithdrawFeePoints, MaxSettableFeePoints, LaunchTime) {
+    constructor(string memory TokenName, string memory TokenSymbol, uint8 TokenDecimals, uint256 InitialSupply, uint256 ClaimPeriod, uint8 BasisPoint, uint256 buyFeePoints, uint256 sellFeePoints, uint256 MaxSettableFeePoints, uint256 LaunchTime) public payable PORToken(TokenName, TokenSymbol, TokenDecimals, InitialSupply, ClaimPeriod, BasisPoint, buyFeePoints, sellFeePoints, MaxSettableFeePoints, LaunchTime) {
 
     }
 
