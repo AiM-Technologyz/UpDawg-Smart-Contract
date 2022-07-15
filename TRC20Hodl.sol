@@ -30,10 +30,18 @@ interface ITRC20Hodl {
     /**
      * @dev See {ITRC20Hodl-claimReward}.
      */
-    function claimReward() external returns (bool);
+    function claimReward() external returns (bool, uint256, uint256);
 
     /**
-     * @dev See {ITRC20Hodl-donateReward}.
+     * @dev This function `burns`, `amount` tokens from
+     * the caller's balance and mints it to contract's hodler's pool.
+     * This decreases the `circulatingSupply` and increases the `hodlSupply`.
+     *
+     * Requirements : 
+     *      - caller must have at least `amount` token in balance.
+     *
+     * Returns : 
+     *      - bool : if or not succesfull.
      */
     function donateReward(uint256 amount) external returns (bool);
 
@@ -104,7 +112,7 @@ contract TRC20Hodl is ITRC20Hodl {
     /**
      * @dev See {ITRC20Hodl-claimReward}.
      */
-    function claimReward() public returns (bool);
+    function claimReward() public returns (bool, uint256, uint256);
 
     /**
      * @dev See {ITRC20Hodl-donateReward}.
@@ -113,15 +121,34 @@ contract TRC20Hodl is ITRC20Hodl {
 
     /*************************************************************
      *  INTERNAL METHODS
-    **************************************************************/
+     **************************************************************/
 
     /**
-     * @dev See {ITRC20Hodl-reserve}.
+     * @dev See {ITRC20Hodl-claimReward}.
      */
-    function _updatePrevClaimOf(address account) internal {
-        require(account != address(0), "ProofOfReserve: account is the zero address.");
+    function _claimReward(address account, uint256 balance, uint256 baseSupply) internal returns (uint256, uint256) {
+        require(account != address(0), "TRC20Hodl: account is the zero address.");
 
+        if (prevClaimOf(account) == 0) {
             _prevClaim[account] = now;
+            return (0, 0);
+        } else {
+            uint256 duration = now.sub(prevClaimOf(account));
+            uint256 reward = duration.mul(balance);
+            reward = reward.mul(hodlSupply());
+            reward = reward.div(claimPeriod());
+            reward = reward.div(baseSupply);
+            uint256 inflation = reward.mul(1).div(10000);
+
+            //Reward overflow check.
+            if (reward >= hodlSupply()) {
+                _burnHodl(hodlSupply());
+            } else {
+                _burnHodl(reward);
+            }
+            _prevClaim[account] = now;
+            return (reward, inflation);
+        }
     }
 
     /** @dev Creates `amount` tokens to hodl Supply, increasing

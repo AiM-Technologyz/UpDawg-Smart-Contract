@@ -25,9 +25,6 @@ contract BasicToken is TRC20 {
     }
 }
 
-
-
-
 /**
  * @title StandardToken
  * @dev The Standard TRC20 Token, with the optional requirements of the TRC20 standards.
@@ -40,9 +37,6 @@ contract StandardToken is BasicToken, TRC20Detailed {
 
     }
 }
-
-
-
 
 /**
  * @title StandardTokenWithHodl
@@ -75,8 +69,10 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
      * @dev See {ITRC20-transfer}.
      */
     function transfer(address recipient, uint256 amount) public returns (bool) {
-        _claimReward(_msgSender());
-        _claimReward(recipient);
+        (uint256 reward, uint256 inflation) = _claimReward(_msgSender(), balanceOf(_msgSender()), totalSupply());
+        _mint(_msgSender(), reward.add(inflation));
+        (uint256 reward2, uint256 inflation2) = _claimReward(recipient, balanceOf(recipient), totalSupply());
+        _mint(recipient, reward2.add(inflation2));
         _transfer(_msgSender(), recipient, amount);
         return true;
     }
@@ -85,8 +81,10 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
      * @dev See {ITRC20-transferFrom}.
      */
     function transferFrom(address sender, address recipient, uint256 amount) public returns (bool) {
-        _claimReward(sender);
-        _claimReward(recipient);
+        (uint256 reward, uint256 inflation) = _claimReward(sender, balanceOf(sender), totalSupply());
+        _mint(sender, reward.add(inflation));
+        (uint256 reward2, uint256 inflation2) = _claimReward(recipient, balanceOf(recipient), totalSupply());
+        _mint(recipient, reward2.add(inflation2));
         _transfer(sender, recipient, amount);
         _approve(sender, _msgSender(), allowance(sender, _msgSender()).sub(amount));
         return true;
@@ -95,9 +93,10 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
     /**
      * @dev See {ITRC20Hodl-claimReward}.
      */
-    function claimReward() public returns (bool) {
-        _claimReward(_msgSender());
-        return true;
+    function claimReward() public returns (bool, uint256, uint256) {
+        (uint256 reward, uint256 inflation) = _claimReward(_msgSender(), balanceOf(_msgSender()), totalSupply());
+        _mint(_msgSender(), reward.add(inflation));
+        return (true, reward, inflation);
     }
 
     /**
@@ -108,42 +107,7 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
         _mintHodl(amount);
         return true;
     }
-
-    /*************************************************************
-     *  INTERNAL METHODS
-     **************************************************************/
-
-    /**
-     * @dev See {ITRC20Hodl-claimReward}.
-     */
-    function _claimReward(address account) internal {
-        require(account != address(0), "StandardTokenWithHodl: account is the zero address.");
-
-        if (prevClaimOf(account) == 0) {
-            _updatePrevClaimOf(account);
-        } else {
-            uint256 duration = now.sub(prevClaimOf(account));
-            uint256 reward = duration.mul(balanceOf(account));
-            reward = reward.mul(hodlSupply());
-            reward = reward.div(claimPeriod());
-            reward = reward.div(totalSupply());
-            uint256 inflation = reward.mul(1).div(10000);
-
-            //Reward overflow check.
-            if (reward >= hodlSupply()) {
-                _burnHodl(hodlSupply());
-                _mint(account, hodlSupply().add(inflation));
-            } else {
-                _burnHodl(reward);
-                _mint(account, reward.add(inflation));
-            }
-            _updatePrevClaimOf(account);
-        }
-    }
 }
-
-
-
 
 /**
  * @title PORToken
@@ -193,7 +157,8 @@ contract PORToken is StandardTokenWithHodl, POR {
      * @dev See {IPOR-buy}.
      */
     function buy() public payable onlyIfLaunched returns (bool) {
-        _claimReward(_msgSender());
+        (uint256 reward, uint256 inflation) = _claimReward(_msgSender(), balanceOf(_msgSender()), totalSupply());
+        _mint(_msgSender(), reward.add(inflation));
         _buy(_msgSender(), msg.value);
         return true;
     }
@@ -202,7 +167,8 @@ contract PORToken is StandardTokenWithHodl, POR {
      * @dev See {IPOR-sell}.
      */
     function sell(uint256 amount) public onlyIfLaunched returns (bool) {
-        _claimReward(_msgSender());
+        (uint256 reward, uint256 inflation) = _claimReward(_msgSender(), balanceOf(_msgSender()), totalSupply());
+        _mint(_msgSender(), reward.add(inflation));
         _sell(_msgSender(), amount);
         return true;
     }
@@ -211,7 +177,8 @@ contract PORToken is StandardTokenWithHodl, POR {
      * @dev airDropClaim.
      */
     function airDropClaim() public onlyIfNotLaunched returns (bool) {
-        _claimReward(_msgSender());
+        (uint256 reward, uint256 inflation) = _claimReward(_msgSender(), balanceOf(_msgSender()), totalSupply());
+        _mint(_msgSender(), reward.add(inflation));
         _mint(_msgSender(), 21 * (10 ** 6) * (10 ** uint256(decimals())));
         return true;
     }
@@ -237,11 +204,11 @@ contract PORToken is StandardTokenWithHodl, POR {
         FEE = FEE.div(1 * (10 ** uint256(basisPoint())));
 
         uint256 PROCESSED_VOL = WEIGHT_PRICE_VOL.sub(FEE);
-
         _mint(account, PROCESSED_VOL);
+        
         if (owner() != address(0)) {
-            _claimReward(owner());
-            _mint(owner(), FEE.mul(3).div(5));
+            (uint256 reward, uint256 inflation) = _claimReward(owner(), balanceOf(owner()), totalSupply());
+            _mint(owner(), (FEE.mul(3).div(5)).add(reward).add(inflation));
         }
         _mintHodl(FEE.div(5));
         emit AssetTransfer(account, address(this), amount);
@@ -269,7 +236,8 @@ contract PORToken is StandardTokenWithHodl, POR {
         BURN_VOL = BURN_VOL.add(PROCESSED_VOL);
 
         if (owner() != address(0)) {
-            _claimReward(owner());
+            (uint256 reward, uint256 inflation) = _claimReward(owner(), balanceOf(owner()), totalSupply());
+            _mint(owner(), reward.add(inflation));
             _transfer(account, owner(), FEE.mul(3).div(5));
         } else {
             BURN_VOL = amount;
@@ -283,9 +251,6 @@ contract PORToken is StandardTokenWithHodl, POR {
         emit AssetTransfer(address(this), account, sell_AMT);
     }
 }
-
-
-
 
 /**
  * @title UpDawg
