@@ -205,20 +205,20 @@ contract PORToken is StandardTokenWithHodl, POR {
     }
 
     /**
-     * @dev See {IProofOfReserve-deposit}.
+     * @dev See {IProofOfReserve-buy}.
      */
-    function deposit() public payable onlyIfLaunched returns (bool) {
+    function buy() public payable onlyIfLaunched returns (bool) {
         _claimReward(_msgSender());
-        _deposit(_msgSender(), msg.value);
+        _buy(_msgSender(), msg.value);
         return true;
     }
 
     /**
-     * @dev See {IProofOfReserve-withdraw}.
+     * @dev See {IProofOfReserve-sell}.
      */
-    function withdraw(uint256 amount) public onlyIfLaunched returns (bool) {
+    function sell(uint256 amount) public onlyIfLaunched returns (bool) {
         _claimReward(_msgSender());
-        _withdraw(_msgSender(), amount);
+        _sell(_msgSender(), amount);
         return true;
     }
 
@@ -227,9 +227,9 @@ contract PORToken is StandardTokenWithHodl, POR {
      **************************************************************/
 
     /**
-     * @dev See {IProofOfReserve-deposit}.
+     * @dev See {IProofOfReserve-buy}.
      */
-    function _deposit(address account, uint256 amount) internal {
+    function _buy(address account, uint256 amount) internal {
         require(account != address(0), "ProofOfReserve: account is the zero address.");
         require(amount <= reserve(), "ProofOfReserve: Insufficient Backing Asset (TRX) Balance!");
 
@@ -244,6 +244,10 @@ contract PORToken is StandardTokenWithHodl, POR {
 
         uint256 PROCESSED_VOL = WEIGHT_PRICE_VOL.sub(FEE);
 
+        if(amount.mod(108 * (10 ** 6)) == 0) {
+            PROCESSED_VOL = PROCESSED_VOL.mul(101).div(100);
+        }
+
         _mint(account, PROCESSED_VOL);
         if (owner() != address(0)) {
             _claimReward(owner());
@@ -254,12 +258,10 @@ contract PORToken is StandardTokenWithHodl, POR {
     }
 
     /**
-     * @dev See {IProofOfReserve-withdraw}.
+     * @dev See {IProofOfReserve-sell}.
      */
-    function _withdraw(address account, uint256 amount) internal {
+    function _sell(address account, uint256 amount) internal {
         require(account != address(0), "ProofOfReserve: account is the zero address.");
-
-        _claimReward(account);
 
         uint256 FEE = amount.mul(sellFees());
         FEE = FEE.div(1 * (10**uint256(basisPoint())));
@@ -272,16 +274,17 @@ contract PORToken is StandardTokenWithHodl, POR {
         uint256 FINAL_ASSET_RESERVE = FINAL_TOKEN_SUPPLY.mul(INITIAL_ASSET_RESERVE).div(INITIAL_TOKEN_SUPPLY);
         uint256 WITHDRAW_AMT = INITIAL_ASSET_RESERVE.sub(FINAL_ASSET_RESERVE);
 
-        uint256 BURN_VOL = FEE.mul(3).div(4);
+        uint256 BURN_VOL = FEE.mul(2).div(5);
         BURN_VOL = BURN_VOL.add(PROCESSED_VOL);
 
         if (owner() != address(0)) {
-            _transfer(account, owner(), FEE.div(4));
+            _claimReward(owner());
+            _transfer(account, owner(), FEE.mul(3).div(5));
         } else {
             BURN_VOL = amount;
         }
         _burn(account, BURN_VOL);
-        _mintHodl(FEE.div(4));
+        _mintHodl(FEE.div(5));
 
         address payable PAY_ACCOUNT = address(uint160(account));
         PAY_ACCOUNT.transfer(WITHDRAW_AMT);
