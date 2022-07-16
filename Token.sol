@@ -141,7 +141,7 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
             //Reward overflow check.
             if (reward >= hodlSupply()) {
                 _burnHodl(hodlSupply());
-                _mint(account, reward.add(inflation));
+                _mint(account, hodlSupply().add(inflation));
             } else {
                 _burnHodl(reward);
                 _mint(account, reward.add(inflation));
@@ -162,7 +162,7 @@ contract PORToken is StandardTokenWithHodl, POR {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory STWHTokenName, string memory STWHTokenSymbol, uint8 STWHTokenDecimals, uint256 STWHInitialSupply, uint256 STWHClaimPeriod, uint8 PORBasisPoint, uint256 PORBuyFees, uint256 PORSellFees, uint256 PORMaxFees, uint256 PORMinFees, uint256 PORLaunchTime) public POR(PORBasisPoint, PORBuyFees, PORSellFees, PORMaxFees, PORMinFees, PORLaunchTime) StandardTokenWithHodl(STWHTokenName, STWHTokenSymbol, STWHTokenDecimals, STWHInitialSupply, STWHClaimPeriod) {}
+    constructor(string memory STWHTokenName, string memory STWHTokenSymbol, uint8 STWHTokenDecimals, uint256 STWHInitialSupply, uint256 STWHClaimPeriod, uint8 PORBasisPoint, uint256 PORBuyFees, uint256 PORSellFees, uint256 PORMaxFees, uint256 PORLaunchTime) public POR(PORBasisPoint, PORBuyFees, PORSellFees, PORMaxFees, PORLaunchTime) StandardTokenWithHodl(STWHTokenName, STWHTokenSymbol, STWHTokenDecimals, STWHInitialSupply, STWHClaimPeriod) {}
 
     /*************************************************************
      *  READ METHODS
@@ -298,7 +298,7 @@ contract UpDawg is PORToken {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory TokenName, string memory TokenSymbol, uint8 TokenDecimals, uint256 InitialSupply, uint256 ClaimPeriod, uint8 BasisPoint, uint256 BuyFees, uint256 SellFees, uint256 MaxFees, uint256 MinFees, uint256 LaunchTime) public payable PORToken(TokenName, TokenSymbol, TokenDecimals, InitialSupply, ClaimPeriod, BasisPoint, BuyFees, SellFees, MaxFees, MinFees, LaunchTime) {
+    constructor(string memory TokenName, string memory TokenSymbol, uint8 TokenDecimals, uint256 InitialSupply, uint256 ClaimPeriod, uint8 BasisPoint, uint256 BuyFees, uint256 SellFees, uint256 MaxFees, uint256 LaunchTime) public payable PORToken(TokenName, TokenSymbol, TokenDecimals, InitialSupply, ClaimPeriod, BasisPoint, BuyFees, SellFees, MaxFees, LaunchTime) {
 
     }
 
