@@ -158,11 +158,11 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
  * Note they can later distribute these tokens as they wish using `transfer` and other
  * `TRC20` functions.
  */
-contract PORToken is StandardTokenWithHodl, ProofOfReserve {
+contract PORToken is StandardTokenWithHodl, POR {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory STWHTokenName, string memory STWHTokenSymbol, uint8 STWHTokenDecimals, uint256 STWHInitialSupply, uint256 STWHClaimPeriod, uint8 PORBasisPoint, uint256 PORBuyFees, uint256 PORSellFees, uint256 PORMaxFees, uint256 PORMinFees, uint256 PORLaunchTime) public ProofOfReserve(PORBasisPoint, PORBuyFees, PORSellFees, PORMaxFees, PORMinFees, PORLaunchTime) StandardTokenWithHodl(STWHTokenName, STWHTokenSymbol, STWHTokenDecimals, STWHInitialSupply, STWHClaimPeriod) {}
+    constructor(string memory STWHTokenName, string memory STWHTokenSymbol, uint8 STWHTokenDecimals, uint256 STWHInitialSupply, uint256 STWHClaimPeriod, uint8 PORBasisPoint, uint256 PORBuyFees, uint256 PORSellFees, uint256 PORMaxFees, uint256 PORMinFees, uint256 PORLaunchTime) public POR(PORBasisPoint, PORBuyFees, PORSellFees, PORMaxFees, PORMinFees, PORLaunchTime) StandardTokenWithHodl(STWHTokenName, STWHTokenSymbol, STWHTokenDecimals, STWHInitialSupply, STWHClaimPeriod) {}
 
     /*************************************************************
      *  READ METHODS
@@ -289,13 +289,6 @@ contract PORToken is StandardTokenWithHodl, ProofOfReserve {
         emit AssetTransfer(address(this), account, WITHDRAW_AMT);
     }
 }
-
-
-
-
-
-
-
 
 /**
  * @title UpDawg
