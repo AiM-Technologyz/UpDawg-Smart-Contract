@@ -18,11 +18,11 @@ contract POR {
     uint256 private MAX_FEES;
 
     uint256 private MIN_FEES;
-    
+
     uint256 private LAUNCH_TIME;
 
     /**
-     * @dev Sets the values for `name`, `symbol`, and `decimals`. All three of
+     * @dev Sets the values for `basisPoint`, `buyFees`, `sellFees`, `maxFees` and `minFees`. Out of these five, three of
      * these values are immutable: they can only be set once during
      * construction.
      */
