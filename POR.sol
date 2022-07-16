@@ -5,7 +5,7 @@ import "./SafeMath.sol";
 /**
  * @dev Optional functions from the TRC20 standard.
  */
-contract ProofOfReserve {
+contract POR {
 
     using SafeMath for uint256;
 
@@ -17,8 +17,8 @@ contract ProofOfReserve {
 
     uint256 private MAX_FEES;
 
-    uint256 private INITIAL_EXCHANGE_RATE;
-
+    uint256 private MIN_FEES;
+    
     uint256 private LAUNCH_TIME;
 
     /**
@@ -26,11 +26,12 @@ contract ProofOfReserve {
      * these values are immutable: they can only be set once during
      * construction.
      */
-    constructor (uint8 POR_BASIS_POINT, uint256 POR_BUY_FEES, uint256 POR_WITHDRAW_FEE_POINTS, uint256 POR_MAX_FEES, uint256 LAUNCHTIME) internal {
+    constructor (uint8 POR_BASIS_POINT, uint256 POR_BUY_FEES, uint256 POR_WITHDRAW_FEE_POINTS, uint256 POR_MAX_FEES, uint256 POR_MIN_FEES, uint256 LAUNCHTIME) internal {
         BASIS_POINT = POR_BASIS_POINT;
         BUY_FEES = POR_BUY_FEES;
         SELL_FEES = POR_WITHDRAW_FEE_POINTS;
         MAX_FEES = POR_MAX_FEES;
+        MIN_FEES = POR_MIN_FEES;
         LAUNCH_TIME = LAUNCHTIME;
     }
 
@@ -58,7 +59,7 @@ contract ProofOfReserve {
      * @dev Throws if called by any account other than the owner.
      */
     modifier feePointsRangeCheck(uint256 FEE_POINTS) {
-        require(MAX_FEES >= FEE_POINTS, "ProofOfReserve: FEE_POINTS out of range error.");
+        require(FEE_POINTS <= maxFees() && FEE_POINTS >= minFees(), "ProofOfReserve: FEE_POINTS out of range error.");
         _;
     }
 
@@ -112,6 +113,16 @@ contract ProofOfReserve {
     function maxFees() public view returns (uint256) {
         return MAX_FEES;
     }
+
+    /**
+     * @dev Returns the minFees of the contract.
+     * For example, if `basisPoint` equals `3`, a `minFees` of `25` represents a
+     * max settable fee of 2.5% (per cent or percentage) and should
+     * be displayed to a user as `2.5%` by the formula (minFees * 100/ (10 ** basisPoint)).
+     */
+    function minFees() public view returns (uint256) {
+        return MIN_FEES;
+    }
     
     /*************************************************************
      *  INTERNAL METHODS
@@ -120,14 +131,14 @@ contract ProofOfReserve {
     /**
      * @dev Updates the `buyFees` of the contract.
      */
-    function _updateDepositFeePoints(uint256 FEE_POINTS) internal {
+    function _updateBuyFees(uint256 FEE_POINTS) internal {
         BUY_FEES = FEE_POINTS;
     }
 
     /**
      * @dev Updates the `sellFees` of the contract.
      */
-    function _updateWithdrawFeePoints(uint256 FEE_POINTS) internal {
+    function _updateSellFees(uint256 FEE_POINTS) internal {
         SELL_FEES = FEE_POINTS;
     }
         
