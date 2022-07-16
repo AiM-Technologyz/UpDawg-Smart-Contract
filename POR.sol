@@ -6,7 +6,6 @@ import "./SafeMath.sol";
  * @dev Interface of the POR (Proof Of Reserve) standard as defined below.
  */
 interface IPOR {
-
     /**
      * @dev Returns the amount of TRX in the contracts reserve.
      */
@@ -21,7 +20,7 @@ interface IPOR {
      * @dev Returns the number of basis Points used by the contract as ratio representation.
      * For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a
      * buy fee of 2.5% (per cent or percentage) and should
-     * be displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).     
+     * be displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).
      */
     function basisPoint() external view returns (uint8);
 
@@ -59,7 +58,7 @@ interface IPOR {
 
     /*************************************************************
      *  WRITE METHODS
-    **************************************************************/
+     **************************************************************/
 
     /**
      * @dev See {IPOR-reserve}.
@@ -70,10 +69,10 @@ interface IPOR {
      * @dev See {IPOR-reserve}.
      */
     function sell(uint256 amount) external returns (bool);
-    
+
     /*************************************************************
      *  EVENT METHODS
-    **************************************************************/
+     **************************************************************/
 
     /**
      * @dev Emitted when `value` of reserve-asset tokens are moved from one account (`from`) to
@@ -81,17 +80,17 @@ interface IPOR {
      *
      * Note that `value` may be zero.
      */
-    event AssetTransfer(address indexed from, address indexed to, uint256 value);
+    event AssetTransfer(
+        address indexed from,
+        address indexed to,
+        uint256 value
+    );
 }
-
-
-
 
 /**
  * @dev Implementation of the {IPOR} interface.
  */
 contract POR is IPOR {
-
     using SafeMath for uint256;
 
     uint8 private BASIS_POINT;
@@ -111,7 +110,14 @@ contract POR is IPOR {
      * these values are immutable: they can only be set once during
      * construction.
      */
-    constructor (uint8 POR_BASIS_POINT, uint256 POR_BUY_FEES, uint256 POR_SELL_FEES, uint256 POR_MAX_FEES, uint256 POR_MIN_FEES, uint256 LAUNCHTIME) internal {
+    constructor(
+        uint8 POR_BASIS_POINT,
+        uint256 POR_BUY_FEES,
+        uint256 POR_SELL_FEES,
+        uint256 POR_MAX_FEES,
+        uint256 POR_MIN_FEES,
+        uint256 LAUNCHTIME
+    ) internal {
         BASIS_POINT = POR_BASIS_POINT;
         BUY_FEES = POR_BUY_FEES;
         SELL_FEES = POR_SELL_FEES;
@@ -122,7 +128,7 @@ contract POR is IPOR {
 
     /*************************************************************
      *  MODIFIER METHODS
-    **************************************************************/
+     **************************************************************/
 
     /**
      * @dev Throws if called by any account other than the owner.
@@ -144,14 +150,20 @@ contract POR is IPOR {
      * @dev Throws if `FEE_POINTS` is greater than `maxFees` or less than `minFees`.
      */
     modifier feePointsRangeCheck(uint256 FEE_POINTS) {
-        require(FEE_POINTS <= maxFees(), "POR Out_Of_Range ERROR: FEE_POINTS is greater than `maxFees`.");
-        require(FEE_POINTS >= minFees(), "POR Out_Of_Range ERROR: FEE_POINTS is less than `minFees`.");
+        require(
+            FEE_POINTS <= maxFees(),
+            "POR Out_Of_Range ERROR: FEE_POINTS is greater than `maxFees`."
+        );
+        require(
+            FEE_POINTS >= minFees(),
+            "POR Out_Of_Range ERROR: FEE_POINTS is less than `minFees`."
+        );
         _;
     }
 
     /*************************************************************
      *  READ METHODS
-    **************************************************************/
+     **************************************************************/
 
     /**
      * @dev See {IPOR-reserve}.
@@ -194,34 +206,10 @@ contract POR is IPOR {
     function minFees() public view returns (uint256) {
         return MIN_FEES;
     }
-    
-    /*************************************************************
-     *  WRITE METHODS
-     **************************************************************/
-
-    /**
-     * @dev Updates the `buyFees` of the contract.
-     */
-    function updateBuyFees(uint256 FEE_POINTS) public returns (bool);
-
-    /**
-     * @dev Updates the `sellFees` of the contract.
-     */
-    function updateSellFees(uint256 FEE_POINTS) public returns (bool);
-
-    /**
-     * @dev See {IPOR-buy}.
-     */
-    function buy() public payable returns (bool);
-
-    /**
-     * @dev See {IPOR-sell}.
-     */
-    function sell(uint256 amount) public returns (bool);
 
     /*************************************************************
      *  INTERNAL METHODS
-    **************************************************************/
+     **************************************************************/
 
     /**
      * @dev Updates the `buyFees` of the contract.
@@ -236,5 +224,4 @@ contract POR is IPOR {
     function _updateSellFees(uint256 FEE_POINTS) internal {
         SELL_FEES = FEE_POINTS;
     }
-    
 }

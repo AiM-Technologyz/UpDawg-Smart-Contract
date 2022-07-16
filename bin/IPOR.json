@@ -1,0 +1,2870 @@
+{
+    "contractName": "IPOR",
+    "abi": [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "AssetTransfer",
+            "type": "event"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "basisPoint",
+            "outputs": [
+                {
+                    "internalType": "uint8",
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [],
+            "name": "buy",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "payable": true,
+            "stateMutability": "payable",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "buyFees",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "exchangeRate",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "maxFees",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "minFees",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "reserve",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "sell",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "sellFees",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"AssetTransfer\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"basisPoint\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"buy\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"buyFees\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"exchangeRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"maxFees\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"minFees\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"reserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"sell\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"sellFees\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface of the POR (Proof Of Reserve) standard as defined below.\",\"methods\":{\"basisPoint()\":{\"details\":\"Returns the number of basis Points used by the contract as ratio representation. For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a buy fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).\"},\"buy()\":{\"details\":\"See {IPOR-reserve}.\"},\"buyFees()\":{\"details\":\"Returns the buyFees of the contract. For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a buy fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (buyFees * 100/ (10 ** basisPoint)).\"},\"exchangeRate()\":{\"details\":\"Returns the current amount of tokens in the contracts reserve.\"},\"maxFees()\":{\"details\":\"Returns the maxFees of the contract. For example, if `basisPoint` equals `3`, a `maxFees` of `25` represents a max settable fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (maxFees * 100/ (10 ** basisPoint)).\"},\"minFees()\":{\"details\":\"Returns the minFees of the contract. For example, if `basisPoint` equals `3`, a `minFees` of `25` represents a max settable fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (minFees * 100/ (10 ** basisPoint)).\"},\"reserve()\":{\"details\":\"Returns the amount of TRX in the contracts reserve.\"},\"sell(uint256)\":{\"details\":\"See {IPOR-reserve}.\"},\"sellFees()\":{\"details\":\"Returns the sellFees of the contract. For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a sell fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"k:/github/UpDawg_Smart_Contract/POR.sol\":\"IPOR\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"k:/github/UpDawg_Smart_Contract/POR.sol\":{\"keccak256\":\"0x88176810fd21c51cfb5b94ef5997f161b1cb66c6d1effe56fed2e3bc30b67dce\",\"urls\":[\"bzz-raw://8570c0f6d5cf2127a0370a2181241bfded36f5ebca52ec519188ac4cd3111c7b\",\"dweb:/ipfs/QmR2zKGhczDryhtNWXLuC1i16vNxNEkZN3pNyMidqE4q4t\"]},\"k:/github/UpDawg_Smart_Contract/SafeMath.sol\":{\"keccak256\":\"0x9144d254a333559a55bacc7856e3b6dcbeb0e9fa87aae5e276bb147bfda3bdfa\",\"urls\":[\"bzz-raw://7d61f765525075459112af0e1f3acde87af7658619e19fbd2bad4ab77384e65a\",\"dweb:/ipfs/QmR4PbD2TSTjfo9PcuyfjMFxEGBRQgqdaQb8K7s71b2AMG\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "k:/github/UpDawg_Smart_Contract/POR.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.5.17+commit.d19bba13"
+    },
+    "ast": {
+        "absolutePath": "k:/github/UpDawg_Smart_Contract/POR.sol",
+        "exportedSymbols": {
+            "IPOR": [
+                254
+            ],
+            "POR": [
+                427
+            ]
+        },
+        "id": 428,
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 197,
+                "literals": [
+                    "solidity",
+                    ">=",
+                    "0.5",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "0:24:3"
+            },
+            {
+                "absolutePath": "k:/github/UpDawg_Smart_Contract/SafeMath.sol",
+                "file": "./SafeMath.sol",
+                "id": 198,
+                "nodeType": "ImportDirective",
+                "scope": 428,
+                "sourceUnit": 561,
+                "src": "28:24:3",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "baseContracts": [],
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "documentation": "@dev Interface of the POR (Proof Of Reserve) standard as defined below.",
+                "fullyImplemented": false,
+                "id": 254,
+                "linearizedBaseContracts": [
+                    254
+                ],
+                "name": "IPOR",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "body": null,
+                        "documentation": "@dev Returns the amount of TRX in the contracts reserve.",
+                        "id": 203,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "reserve",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 199,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "263:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 202,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 201,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 203,
+                                    "src": "289:7:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 200,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "289:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "288:9:3"
+                        },
+                        "scope": 254,
+                        "src": "247:51:3",
+                        "stateMutability": "view",
+                        "superFunction": null,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": null,
+                        "documentation": "@dev Returns the current amount of tokens in the contracts reserve.",
+                        "id": 208,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "exchangeRate",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 204,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "421:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 207,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 206,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 208,
+                                    "src": "447:7:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 205,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "447:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "446:9:3"
+                        },
+                        "scope": 254,
+                        "src": "400:56:3",
+                        "stateMutability": "view",
+                        "superFunction": null,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": null,
+                        "documentation": "@dev Returns the number of basis Points used by the contract as ratio representation.\nFor example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a\nbuy fee of 2.5% (per cent or percentage) and should\nbe displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).",
+                        "id": 213,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "basisPoint",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 209,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "832:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 212,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 211,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 213,
+                                    "src": "858:5:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint8",
+                                        "typeString": "uint8"
+                                    },
+                                    "typeName": {
+                                        "id": 210,
+                                        "name": "uint8",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "858:5:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint8",
+                                            "typeString": "uint8"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "857:7:3"
+                        },
+                        "scope": 254,
+                        "src": "813:52:3",
+                        "stateMutability": "view",
+                        "superFunction": null,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": null,
+                        "documentation": "@dev Returns the buyFees of the contract.\nFor example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a\nbuy fee of 2.5% (per cent or percentage) and should\nbe displayed to a user as `2.5%` by the formula (buyFees * 100/ (10 ** basisPoint)).",
+                        "id": 218,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "buyFees",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 214,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1192:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 217,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 216,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 218,
+                                    "src": "1218:7:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 215,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1218:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1217:9:3"
+                        },
+                        "scope": 254,
+                        "src": "1176:51:3",
+                        "stateMutability": "view",
+                        "superFunction": null,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": null,
+                        "documentation": "@dev Returns the sellFees of the contract.\nFor example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a\nsell fee of 2.5% (per cent or percentage) and should\nbe displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).",
+                        "id": 223,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "sellFees",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 219,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1559:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 222,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 221,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 223,
+                                    "src": "1585:7:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 220,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1585:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1584:9:3"
+                        },
+                        "scope": 254,
+                        "src": "1542:52:3",
+                        "stateMutability": "view",
+                        "superFunction": null,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": null,
+                        "documentation": "@dev Returns the maxFees of the contract.\nFor example, if `basisPoint` equals `3`, a `maxFees` of `25` represents a\nmax settable fee of 2.5% (per cent or percentage) and should\nbe displayed to a user as `2.5%` by the formula (maxFees * 100/ (10 ** basisPoint)).",
+                        "id": 228,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "maxFees",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 224,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1930:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 227,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 226,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 228,
+                                    "src": "1956:7:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 225,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1956:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1955:9:3"
+                        },
+                        "scope": 254,
+                        "src": "1914:51:3",
+                        "stateMutability": "view",
+                        "superFunction": null,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": null,
+                        "documentation": "@dev Returns the minFees of the contract.\nFor example, if `basisPoint` equals `3`, a `minFees` of `25` represents a\nmax settable fee of 2.5% (per cent or percentage) and should\nbe displayed to a user as `2.5%` by the formula (minFees * 100/ (10 ** basisPoint)).",
+                        "id": 233,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "minFees",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 229,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2301:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 232,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 231,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 233,
+                                    "src": "2327:7:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 230,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2327:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2326:9:3"
+                        },
+                        "scope": 254,
+                        "src": "2285:51:3",
+                        "stateMutability": "view",
+                        "superFunction": null,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": null,
+                        "documentation": "@dev See {IPOR-reserve}.",
+                        "id": 238,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "buy",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 234,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2570:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 237,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 236,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 238,
+                                    "src": "2599:4:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 235,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2599:4:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2598:6:3"
+                        },
+                        "scope": 254,
+                        "src": "2558:47:3",
+                        "stateMutability": "payable",
+                        "superFunction": null,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": null,
+                        "documentation": "@dev See {IPOR-reserve}.",
+                        "id": 245,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "sell",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 241,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 240,
+                                    "name": "amount",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 245,
+                                    "src": "2678:14:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 239,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2678:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2677:16:3"
+                        },
+                        "returnParameters": {
+                            "id": 244,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 243,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 245,
+                                    "src": "2712:4:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 242,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2712:4:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2711:6:3"
+                        },
+                        "scope": 254,
+                        "src": "2664:54:3",
+                        "stateMutability": "nonpayable",
+                        "superFunction": null,
+                        "visibility": "external"
+                    },
+                    {
+                        "anonymous": false,
+                        "documentation": "@dev Emitted when `value` of reserve-asset tokens are moved from one account (`from`) to\nanother (`to`).\n\n     * Note that `value` may be zero.",
+                        "id": 253,
+                        "name": "AssetTransfer",
+                        "nodeType": "EventDefinition",
+                        "parameters": {
+                            "id": 252,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 247,
+                                    "indexed": true,
+                                    "name": "from",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 253,
+                                    "src": "3105:20:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 246,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3105:7:3",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 249,
+                                    "indexed": true,
+                                    "name": "to",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 253,
+                                    "src": "3136:18:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 248,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3136:7:3",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 251,
+                                    "indexed": false,
+                                    "name": "value",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 253,
+                                    "src": "3165:13:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 250,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3165:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "3094:91:3"
+                        },
+                        "src": "3075:111:3"
+                    }
+                ],
+                "scope": 428,
+                "src": "142:3047:3"
+            },
+            {
+                "baseContracts": [
+                    {
+                        "arguments": null,
+                        "baseName": {
+                            "contractScope": null,
+                            "id": 255,
+                            "name": "IPOR",
+                            "nodeType": "UserDefinedTypeName",
+                            "referencedDeclaration": 254,
+                            "src": "3268:4:3",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_IPOR_$254",
+                                "typeString": "contract IPOR"
+                            }
+                        },
+                        "id": 256,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "3268:4:3"
+                    }
+                ],
+                "contractDependencies": [
+                    254
+                ],
+                "contractKind": "contract",
+                "documentation": "@dev Implementation of the {IPOR} interface.",
+                "fullyImplemented": false,
+                "id": 427,
+                "linearizedBaseContracts": [
+                    427,
+                    254
+                ],
+                "name": "POR",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "id": 259,
+                        "libraryName": {
+                            "contractScope": null,
+                            "id": 257,
+                            "name": "SafeMath",
+                            "nodeType": "UserDefinedTypeName",
+                            "referencedDeclaration": 560,
+                            "src": "3286:8:3",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_SafeMath_$560",
+                                "typeString": "library SafeMath"
+                            }
+                        },
+                        "nodeType": "UsingForDirective",
+                        "src": "3280:27:3",
+                        "typeName": {
+                            "id": 258,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "3299:7:3",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        }
+                    },
+                    {
+                        "constant": false,
+                        "id": 261,
+                        "name": "BASIS_POINT",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 427,
+                        "src": "3315:25:3",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint8",
+                            "typeString": "uint8"
+                        },
+                        "typeName": {
+                            "id": 260,
+                            "name": "uint8",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "3315:5:3",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint8",
+                                "typeString": "uint8"
+                            }
+                        },
+                        "value": null,
+                        "visibility": "private"
+                    },
+                    {
+                        "constant": false,
+                        "id": 263,
+                        "name": "BUY_FEES",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 427,
+                        "src": "3349:24:3",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 262,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "3349:7:3",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "value": null,
+                        "visibility": "private"
+                    },
+                    {
+                        "constant": false,
+                        "id": 265,
+                        "name": "SELL_FEES",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 427,
+                        "src": "3382:25:3",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 264,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "3382:7:3",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "value": null,
+                        "visibility": "private"
+                    },
+                    {
+                        "constant": false,
+                        "id": 267,
+                        "name": "MAX_FEES",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 427,
+                        "src": "3416:24:3",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 266,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "3416:7:3",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "value": null,
+                        "visibility": "private"
+                    },
+                    {
+                        "constant": false,
+                        "id": 269,
+                        "name": "MIN_FEES",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 427,
+                        "src": "3449:24:3",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 268,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "3449:7:3",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "value": null,
+                        "visibility": "private"
+                    },
+                    {
+                        "constant": false,
+                        "id": 271,
+                        "name": "LAUNCH_TIME",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 427,
+                        "src": "3482:27:3",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 270,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "3482:7:3",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "value": null,
+                        "visibility": "private"
+                    },
+                    {
+                        "body": {
+                            "id": 310,
+                            "nodeType": "Block",
+                            "src": "3921:221:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 288,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 286,
+                                            "name": "BASIS_POINT",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 261,
+                                            "src": "3932:11:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint8",
+                                                "typeString": "uint8"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 287,
+                                            "name": "POR_BASIS_POINT",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 273,
+                                            "src": "3946:15:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint8",
+                                                "typeString": "uint8"
+                                            }
+                                        },
+                                        "src": "3932:29:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint8",
+                                            "typeString": "uint8"
+                                        }
+                                    },
+                                    "id": 289,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "3932:29:3"
+                                },
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 292,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 290,
+                                            "name": "BUY_FEES",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 263,
+                                            "src": "3972:8:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 291,
+                                            "name": "POR_BUY_FEES",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 275,
+                                            "src": "3983:12:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "3972:23:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 293,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "3972:23:3"
+                                },
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 296,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 294,
+                                            "name": "SELL_FEES",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 265,
+                                            "src": "4006:9:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 295,
+                                            "name": "POR_SELL_FEES",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 277,
+                                            "src": "4018:13:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "4006:25:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 297,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "4006:25:3"
+                                },
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 300,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 298,
+                                            "name": "MAX_FEES",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 267,
+                                            "src": "4042:8:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 299,
+                                            "name": "POR_MAX_FEES",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 279,
+                                            "src": "4053:12:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "4042:23:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 301,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "4042:23:3"
+                                },
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 304,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 302,
+                                            "name": "MIN_FEES",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 269,
+                                            "src": "4076:8:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 303,
+                                            "name": "POR_MIN_FEES",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 281,
+                                            "src": "4087:12:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "4076:23:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 305,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "4076:23:3"
+                                },
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 308,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 306,
+                                            "name": "LAUNCH_TIME",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 271,
+                                            "src": "4110:11:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 307,
+                                            "name": "LAUNCHTIME",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 283,
+                                            "src": "4124:10:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "4110:24:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 309,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "4110:24:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Sets the values for `name`, `symbol`, and `decimals`. All three of\nthese values are immutable: they can only be set once during\nconstruction.",
+                        "id": 311,
+                        "implemented": true,
+                        "kind": "constructor",
+                        "modifiers": [],
+                        "name": "",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 284,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 273,
+                                    "name": "POR_BASIS_POINT",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 311,
+                                    "src": "3729:21:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint8",
+                                        "typeString": "uint8"
+                                    },
+                                    "typeName": {
+                                        "id": 272,
+                                        "name": "uint8",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3729:5:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint8",
+                                            "typeString": "uint8"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 275,
+                                    "name": "POR_BUY_FEES",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 311,
+                                    "src": "3761:20:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 274,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3761:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 277,
+                                    "name": "POR_SELL_FEES",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 311,
+                                    "src": "3792:21:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 276,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3792:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 279,
+                                    "name": "POR_MAX_FEES",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 311,
+                                    "src": "3824:20:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 278,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3824:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 281,
+                                    "name": "POR_MIN_FEES",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 311,
+                                    "src": "3855:20:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 280,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3855:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 283,
+                                    "name": "LAUNCHTIME",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 311,
+                                    "src": "3886:18:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 282,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3886:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "3718:193:3"
+                        },
+                        "returnParameters": {
+                            "id": 285,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "3921:0:3"
+                        },
+                        "scope": 427,
+                        "src": "3707:435:3",
+                        "stateMutability": "nonpayable",
+                        "superFunction": null,
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 321,
+                            "nodeType": "Block",
+                            "src": "4427:84:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "arguments": [
+                                            {
+                                                "argumentTypes": null,
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 316,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "argumentTypes": null,
+                                                    "id": 314,
+                                                    "name": "now",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 2266,
+                                                    "src": "4446:3:3",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": ">=",
+                                                "rightExpression": {
+                                                    "argumentTypes": null,
+                                                    "id": 315,
+                                                    "name": "LAUNCH_TIME",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 271,
+                                                    "src": "4453:11:3",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "src": "4446:18:3",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "argumentTypes": null,
+                                                "hexValue": "504f523a204e6f7420796574204c61756e6368656421",
+                                                "id": 317,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "4466:24:3",
+                                                "subdenomination": null,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_f9ec128f41f5ab51a0fc4381603a2b4dcc71bc216319ff2b5be6411bf640397c",
+                                                    "typeString": "literal_string \"POR: Not yet Launched!\""
+                                                },
+                                                "value": "POR: Not yet Launched!"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_f9ec128f41f5ab51a0fc4381603a2b4dcc71bc216319ff2b5be6411bf640397c",
+                                                    "typeString": "literal_string \"POR: Not yet Launched!\""
+                                                }
+                                            ],
+                                            "id": 313,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                2267,
+                                                2268
+                                            ],
+                                            "referencedDeclaration": 2268,
+                                            "src": "4438:7:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 318,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "4438:53:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 319,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "4438:53:3"
+                                },
+                                {
+                                    "id": 320,
+                                    "nodeType": "PlaceholderStatement",
+                                    "src": "4502:1:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Throws if called by any account other than the owner.",
+                        "id": 322,
+                        "name": "onlyIfLaunched",
+                        "nodeType": "ModifierDefinition",
+                        "parameters": {
+                            "id": 312,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "4424:2:3"
+                        },
+                        "src": "4401:110:3",
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 332,
+                            "nodeType": "Block",
+                            "src": "4633:83:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "arguments": [
+                                            {
+                                                "argumentTypes": null,
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 327,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "argumentTypes": null,
+                                                    "id": 325,
+                                                    "name": "now",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 2266,
+                                                    "src": "4652:3:3",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "<",
+                                                "rightExpression": {
+                                                    "argumentTypes": null,
+                                                    "id": 326,
+                                                    "name": "LAUNCH_TIME",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 271,
+                                                    "src": "4658:11:3",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "src": "4652:17:3",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "argumentTypes": null,
+                                                "hexValue": "504f523a20416c7265616479204c61756e6368656421",
+                                                "id": 328,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "4671:24:3",
+                                                "subdenomination": null,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_cb57b2ad32da9327f20e26e5b27454e15ad016055161dc078c8b90438aec7040",
+                                                    "typeString": "literal_string \"POR: Already Launched!\""
+                                                },
+                                                "value": "POR: Already Launched!"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_cb57b2ad32da9327f20e26e5b27454e15ad016055161dc078c8b90438aec7040",
+                                                    "typeString": "literal_string \"POR: Already Launched!\""
+                                                }
+                                            ],
+                                            "id": 324,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                2267,
+                                                2268
+                                            ],
+                                            "referencedDeclaration": 2268,
+                                            "src": "4644:7:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 329,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "4644:52:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 330,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "4644:52:3"
+                                },
+                                {
+                                    "id": 331,
+                                    "nodeType": "PlaceholderStatement",
+                                    "src": "4707:1:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Throws if called by any account other than the owner.",
+                        "id": 333,
+                        "name": "onlyIfNotLaunched",
+                        "nodeType": "ModifierDefinition",
+                        "parameters": {
+                            "id": 323,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "4630:2:3"
+                        },
+                        "src": "4604:112:3",
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 354,
+                            "nodeType": "Block",
+                            "src": "4877:307:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "arguments": [
+                                            {
+                                                "argumentTypes": null,
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 341,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "argumentTypes": null,
+                                                    "id": 338,
+                                                    "name": "FEE_POINTS",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 335,
+                                                    "src": "4910:10:3",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "<=",
+                                                "rightExpression": {
+                                                    "argumentTypes": null,
+                                                    "arguments": [],
+                                                    "expression": {
+                                                        "argumentTypes": [],
+                                                        "id": 339,
+                                                        "name": "maxFees",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 398,
+                                                        "src": "4924:7:3",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_function_internal_view$__$returns$_t_uint256_$",
+                                                            "typeString": "function () view returns (uint256)"
+                                                        }
+                                                    },
+                                                    "id": 340,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "functionCall",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "4924:9:3",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "src": "4910:23:3",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "argumentTypes": null,
+                                                "hexValue": "504f52204f75745f4f665f52616e6765204552524f523a204645455f504f494e54532069732067726561746572207468616e20606d617846656573602e",
+                                                "id": 342,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "4948:63:3",
+                                                "subdenomination": null,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_715b192f1c0231f6945d87a94ff0589931a40854aa3047459c1e10976098ffc3",
+                                                    "typeString": "literal_string \"POR Out_Of_Range ERROR: FEE_POINTS is greater than `maxFees`.\""
+                                                },
+                                                "value": "POR Out_Of_Range ERROR: FEE_POINTS is greater than `maxFees`."
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_715b192f1c0231f6945d87a94ff0589931a40854aa3047459c1e10976098ffc3",
+                                                    "typeString": "literal_string \"POR Out_Of_Range ERROR: FEE_POINTS is greater than `maxFees`.\""
+                                                }
+                                            ],
+                                            "id": 337,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                2267,
+                                                2268
+                                            ],
+                                            "referencedDeclaration": 2268,
+                                            "src": "4888:7:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 343,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "4888:134:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 344,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "4888:134:3"
+                                },
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "arguments": [
+                                            {
+                                                "argumentTypes": null,
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 349,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "argumentTypes": null,
+                                                    "id": 346,
+                                                    "name": "FEE_POINTS",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 335,
+                                                    "src": "5055:10:3",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": ">=",
+                                                "rightExpression": {
+                                                    "argumentTypes": null,
+                                                    "arguments": [],
+                                                    "expression": {
+                                                        "argumentTypes": [],
+                                                        "id": 347,
+                                                        "name": "minFees",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 406,
+                                                        "src": "5069:7:3",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_function_internal_view$__$returns$_t_uint256_$",
+                                                            "typeString": "function () view returns (uint256)"
+                                                        }
+                                                    },
+                                                    "id": 348,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "functionCall",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "5069:9:3",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "src": "5055:23:3",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "argumentTypes": null,
+                                                "hexValue": "504f52204f75745f4f665f52616e6765204552524f523a204645455f504f494e5453206973206c657373207468616e20606d696e46656573602e",
+                                                "id": 350,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "5093:60:3",
+                                                "subdenomination": null,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_952e326d22b55d43191625a9a725156e545ddc3dda4c5de7ecc19a04a517ce54",
+                                                    "typeString": "literal_string \"POR Out_Of_Range ERROR: FEE_POINTS is less than `minFees`.\""
+                                                },
+                                                "value": "POR Out_Of_Range ERROR: FEE_POINTS is less than `minFees`."
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_952e326d22b55d43191625a9a725156e545ddc3dda4c5de7ecc19a04a517ce54",
+                                                    "typeString": "literal_string \"POR Out_Of_Range ERROR: FEE_POINTS is less than `minFees`.\""
+                                                }
+                                            ],
+                                            "id": 345,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                2267,
+                                                2268
+                                            ],
+                                            "referencedDeclaration": 2268,
+                                            "src": "5033:7:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 351,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "5033:131:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 352,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "5033:131:3"
+                                },
+                                {
+                                    "id": 353,
+                                    "nodeType": "PlaceholderStatement",
+                                    "src": "5175:1:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Throws if `FEE_POINTS` is greater than `maxFees` or less than `minFees`.",
+                        "id": 355,
+                        "name": "feePointsRangeCheck",
+                        "nodeType": "ModifierDefinition",
+                        "parameters": {
+                            "id": 336,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 335,
+                                    "name": "FEE_POINTS",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 355,
+                                    "src": "4857:18:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 334,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "4857:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "4856:20:3"
+                        },
+                        "src": "4828:356:3",
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 365,
+                            "nodeType": "Block",
+                            "src": "5454:47:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "expression": {
+                                            "argumentTypes": null,
+                                            "arguments": [
+                                                {
+                                                    "argumentTypes": null,
+                                                    "id": 361,
+                                                    "name": "this",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 2288,
+                                                    "src": "5480:4:3",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_contract$_POR_$427",
+                                                        "typeString": "contract POR"
+                                                    }
+                                                }
+                                            ],
+                                            "expression": {
+                                                "argumentTypes": [
+                                                    {
+                                                        "typeIdentifier": "t_contract$_POR_$427",
+                                                        "typeString": "contract POR"
+                                                    }
+                                                ],
+                                                "id": 360,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "lValueRequested": false,
+                                                "nodeType": "ElementaryTypeNameExpression",
+                                                "src": "5472:7:3",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_address_$",
+                                                    "typeString": "type(address)"
+                                                },
+                                                "typeName": "address"
+                                            },
+                                            "id": 362,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "kind": "typeConversion",
+                                            "lValueRequested": false,
+                                            "names": [],
+                                            "nodeType": "FunctionCall",
+                                            "src": "5472:13:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "id": 363,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "memberName": "balance",
+                                        "nodeType": "MemberAccess",
+                                        "referencedDeclaration": null,
+                                        "src": "5472:21:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "functionReturnParameters": 359,
+                                    "id": 364,
+                                    "nodeType": "Return",
+                                    "src": "5465:28:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev See {IPOR-reserve}.",
+                        "id": 366,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "reserve",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 356,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "5421:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 359,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 358,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 366,
+                                    "src": "5445:7:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 357,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "5445:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "5444:9:3"
+                        },
+                        "scope": 427,
+                        "src": "5405:96:3",
+                        "stateMutability": "view",
+                        "superFunction": 203,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 373,
+                            "nodeType": "Block",
+                            "src": "5613:37:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 371,
+                                        "name": "BASIS_POINT",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 261,
+                                        "src": "5631:11:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint8",
+                                            "typeString": "uint8"
+                                        }
+                                    },
+                                    "functionReturnParameters": 370,
+                                    "id": 372,
+                                    "nodeType": "Return",
+                                    "src": "5624:18:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev See {IPOR-basisPoint}.",
+                        "id": 374,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "basisPoint",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 367,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "5582:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 370,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 369,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 374,
+                                    "src": "5606:5:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint8",
+                                        "typeString": "uint8"
+                                    },
+                                    "typeName": {
+                                        "id": 368,
+                                        "name": "uint8",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "5606:5:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint8",
+                                            "typeString": "uint8"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "5605:7:3"
+                        },
+                        "scope": 427,
+                        "src": "5563:87:3",
+                        "stateMutability": "view",
+                        "superFunction": 213,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 381,
+                            "nodeType": "Block",
+                            "src": "5758:34:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 379,
+                                        "name": "BUY_FEES",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 263,
+                                        "src": "5776:8:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "functionReturnParameters": 378,
+                                    "id": 380,
+                                    "nodeType": "Return",
+                                    "src": "5769:15:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev See {IPOR-buyFees}.",
+                        "id": 382,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "buyFees",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 375,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "5725:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 378,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 377,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 382,
+                                    "src": "5749:7:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 376,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "5749:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "5748:9:3"
+                        },
+                        "scope": 427,
+                        "src": "5709:83:3",
+                        "stateMutability": "view",
+                        "superFunction": 218,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 389,
+                            "nodeType": "Block",
+                            "src": "5902:35:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 387,
+                                        "name": "SELL_FEES",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 265,
+                                        "src": "5920:9:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "functionReturnParameters": 386,
+                                    "id": 388,
+                                    "nodeType": "Return",
+                                    "src": "5913:16:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev See {IPOR-sellFees}.",
+                        "id": 390,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "sellFees",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 383,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "5869:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 386,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 385,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 390,
+                                    "src": "5893:7:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 384,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "5893:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "5892:9:3"
+                        },
+                        "scope": 427,
+                        "src": "5852:85:3",
+                        "stateMutability": "view",
+                        "superFunction": 223,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 397,
+                            "nodeType": "Block",
+                            "src": "6045:34:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 395,
+                                        "name": "MAX_FEES",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 267,
+                                        "src": "6063:8:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "functionReturnParameters": 394,
+                                    "id": 396,
+                                    "nodeType": "Return",
+                                    "src": "6056:15:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev See {IPOR-maxFees}.",
+                        "id": 398,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "maxFees",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 391,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "6012:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 394,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 393,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 398,
+                                    "src": "6036:7:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 392,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "6036:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "6035:9:3"
+                        },
+                        "scope": 427,
+                        "src": "5996:83:3",
+                        "stateMutability": "view",
+                        "superFunction": 228,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 405,
+                            "nodeType": "Block",
+                            "src": "6187:34:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 403,
+                                        "name": "MIN_FEES",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 269,
+                                        "src": "6205:8:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "functionReturnParameters": 402,
+                                    "id": 404,
+                                    "nodeType": "Return",
+                                    "src": "6198:15:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev See {IPOR-minFees}.",
+                        "id": 406,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "minFees",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 399,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "6154:2:3"
+                        },
+                        "returnParameters": {
+                            "id": 402,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 401,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 406,
+                                    "src": "6178:7:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 400,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "6178:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "6177:9:3"
+                        },
+                        "scope": 427,
+                        "src": "6138:83:3",
+                        "stateMutability": "view",
+                        "superFunction": 233,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 415,
+                            "nodeType": "Block",
+                            "src": "6518:40:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 413,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 411,
+                                            "name": "BUY_FEES",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 263,
+                                            "src": "6529:8:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 412,
+                                            "name": "FEE_POINTS",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 408,
+                                            "src": "6540:10:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "6529:21:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 414,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "6529:21:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Updates the `buyFees` of the contract.",
+                        "id": 416,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "_updateBuyFees",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 409,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 408,
+                                    "name": "FEE_POINTS",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 416,
+                                    "src": "6489:18:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 407,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "6489:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "6488:20:3"
+                        },
+                        "returnParameters": {
+                            "id": 410,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "6518:0:3"
+                        },
+                        "scope": 427,
+                        "src": "6465:93:3",
+                        "stateMutability": "nonpayable",
+                        "superFunction": null,
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 425,
+                            "nodeType": "Block",
+                            "src": "6691:41:3",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 423,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 421,
+                                            "name": "SELL_FEES",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 265,
+                                            "src": "6702:9:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 422,
+                                            "name": "FEE_POINTS",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 418,
+                                            "src": "6714:10:3",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "6702:22:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 424,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "6702:22:3"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Updates the `sellFees` of the contract.",
+                        "id": 426,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "_updateSellFees",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 419,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 418,
+                                    "name": "FEE_POINTS",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 426,
+                                    "src": "6662:18:3",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 417,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "6662:7:3",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "6661:20:3"
+                        },
+                        "returnParameters": {
+                            "id": 420,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "6691:0:3"
+                        },
+                        "scope": 427,
+                        "src": "6637:95:3",
+                        "stateMutability": "nonpayable",
+                        "superFunction": null,
+                        "visibility": "internal"
+                    }
+                ],
+                "scope": 428,
+                "src": "3252:3483:3"
+            }
+        ],
+        "src": "0:6737:3"
+    },
+    "functionHashes": {
+        "basisPoint()": "2f7b1915",
+        "buy()": "a6f2ae3a",
+        "buyFees()": "e4748b9e",
+        "exchangeRate()": "3ba0b9a9",
+        "maxFees()": "e83e34b1",
+        "minFees()": "c1722563",
+        "reserve()": "cd3293de",
+        "sell(uint256)": "e4849b32",
+        "sellFees()": "e0f3ccf5"
+    },
+    "gasEstimates": null
+}

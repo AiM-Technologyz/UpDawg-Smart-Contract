@@ -8,36 +8,17 @@ import "./TRC20Hodl.sol";
 import "./POR.sol";
 
 /**
- * @title BasicToken
- * @dev Very basic TRC20 Token, without the optional requirements of the TRC20 standards.
- * All tokens are pre-assigned to the creator.
- * Note they can later distribute these tokens as they wish using `transfer` and other
- * `TRC20` functions.
- * Note Initial Supply can be set to zero in case where a miniting mechanism is defined
- * in deriving contracts.
- */
-contract BasicToken is TRC20 {
-    /**
-     * @dev Constructor that gives _msgSender() all of existing tokens.
-     */
-    constructor(uint256 BasicTokenInitialSupply) public {
-        _mint(_msgSender(), BasicTokenInitialSupply);
-    }
-}
-
-/**
  * @title StandardToken
  * @dev The Standard TRC20 Token, with the optional requirements of the TRC20 standards.
  */
-contract StandardToken is BasicToken, TRC20Detailed {
+contract StandardToken is TRC20, TRC20Detailed {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(
-        string memory TRC20DetailedTokenName,
+    constructor(string memory TRC20DetailedTokenName,
         string memory TRC20DetailedTokenSymbol,
         uint8 TRC20DetailedTokenDecimals,
-        uint256 BasicTokenInitialSupply
+        uint256 TRC20InitialSupply
     )
         public
         TRC20Detailed(
@@ -45,10 +26,9 @@ contract StandardToken is BasicToken, TRC20Detailed {
             TRC20DetailedTokenSymbol,
             TRC20DetailedTokenDecimals
         )
-        BasicToken(
-            BasicTokenInitialSupply * (10**uint256(TRC20DetailedTokenDecimals))
-        )
-    {}
+    {
+        _mint(_msgSender(), TRC20InitialSupply);
+    }
 }
 
 /**
@@ -219,8 +199,8 @@ contract PORToken is StandardTokenWithHodl, POR {
     /**
      * @dev See {IPOR-exchangeRate}.
      */
-    function exchangeRate() public view returns (uint256) {
-        return totalSupply().mul(1_000_000).div(reserve());
+    function exchangeRate(uint256 TRX_AMOUNT) public view returns (uint256) {
+        return totalSupply().mul(TRX_AMOUNT).div(reserve());
     }
 
     /*************************************************************
@@ -361,7 +341,10 @@ contract PORToken is StandardTokenWithHodl, POR {
             .div(INITIAL_TOKEN_SUPPLY);
         uint256 sell_AMT = INITIAL_ASSET_RESERVE.sub(FINAL_ASSET_RESERVE);
 
-        uint256 BURN_VOL = FEE.mul(2).div(4);
+        uint256 BURN_VOL = FEE.mul(2).div(5);
+        BURN_VOL = BURN_VOL.add(PROCESSED_VOL);
+
+        uint256 DAO_VOL = FEE.mul(3).div(5);
         BURN_VOL = BURN_VOL.add(PROCESSED_VOL);
 
         if (owner() != address(0)) {
@@ -371,7 +354,7 @@ contract PORToken is StandardTokenWithHodl, POR {
                 totalSupply()
             );
             _mint(owner(), reward.add(inflation));
-            _transfer(account, owner(), FEE.mul(3).div(5));
+            _transfer(account, owner(), DAO_VOL);
         } else {
             BURN_VOL = amount;
         }
