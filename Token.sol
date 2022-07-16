@@ -226,12 +226,9 @@ contract PORToken is StandardTokenWithHodl, POR {
      *  INTERNAL METHODS
      **************************************************************/
 
-    /**
-     * @dev See {IProofOfReserve-buy}.
-     */
     function _buy(address account, uint256 amount) internal {
         require(account != address(0), "ProofOfReserve: account is the zero address.");
-        require(amount <= reserve(), "ProofOfReserve: Insufficient Backing Asset (TRX) Balance!");
+        require(amount <= reserve(), "ProofOfReserve: Insufficient TRX Reserve!");
 
         uint256 INITIAL_ASSET_RESERVE = reserve().sub(amount);
         uint256 INITIAL_TOKEN_SUPPLY = totalSupply();
@@ -257,11 +254,9 @@ contract PORToken is StandardTokenWithHodl, POR {
         emit AssetTransfer(account, address(this), amount);
     }
 
-    /**
-     * @dev See {IProofOfReserve-sell}.
-     */
     function _sell(address account, uint256 amount) internal {
         require(account != address(0), "ProofOfReserve: account is the zero address.");
+        require(amount <= balanceOf(account).mul(9).div(10), "ProofOfReserve: account is the zero address.");
 
         uint256 FEE = amount.mul(sellFees());
         FEE = FEE.div(1 * (10**uint256(basisPoint())));
