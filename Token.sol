@@ -256,7 +256,6 @@ contract PORToken is StandardTokenWithHodl, POR {
 
     function _sell(address account, uint256 amount) internal {
         require(account != address(0), "ProofOfReserve: account is the zero address.");
-        require(amount <= balanceOf(account).mul(9).div(10), "ProofOfReserve: account is the zero address.");
 
         uint256 FEE = amount.mul(sellFees());
         FEE = FEE.div(1 * (10**uint256(basisPoint())));
