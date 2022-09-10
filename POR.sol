@@ -24,10 +24,10 @@ contract POR {
      * these values are immutable: they can only be set once during
      * construction.
      */
-    constructor (uint8 POR_BASIS_POINT, uint256 POR_BUY_FEES, uint256 POR_WITHDRAW_FEE_POINTS, uint256 POR_MAX_FEES, uint256 LAUNCHTIME) internal {
+    constructor (uint8 POR_BASIS_POINT, uint256 POR_BUY_FEES, uint256 POR_SELL_FEE_POINTS, uint256 POR_MAX_FEES, uint256 LAUNCHTIME) internal {
         BASIS_POINT = POR_BASIS_POINT;
         BUY_FEES = POR_BUY_FEES;
-        SELL_FEES = POR_WITHDRAW_FEE_POINTS;
+        SELL_FEES = POR_SELL_FEE_POINTS;
         MAX_FEES = POR_MAX_FEES;
         LAUNCH_TIME = LAUNCHTIME;
     }
