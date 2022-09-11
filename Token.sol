@@ -162,7 +162,7 @@ contract PORToken is StandardTokenWithHodl, POR {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory STWHTokenName, string memory STWHTokenSymbol, uint8 STWHTokenDecimals, uint256 STWHInitialSupply, uint256 STWHClaimPeriod, uint8 PORBasisPoint, uint256 PORBuyFees, uint256 PORSellFees, uint256 PORMaxFees, uint256 PORLaunchTime) public POR(PORBasisPoint, PORBuyFees, PORSellFees, PORMaxFees, PORLaunchTime) StandardTokenWithHodl(STWHTokenName, STWHTokenSymbol, STWHTokenDecimals, STWHInitialSupply, STWHClaimPeriod) {}
+    constructor(string memory STWHTokenName, string memory STWHTokenSymbol, uint8 STWHTokenDecimals, uint256 STWHInitialSupply, uint256 STWHClaimPeriod, uint256 PORLaunchTime) public POR(PORLaunchTime) StandardTokenWithHodl(STWHTokenName, STWHTokenSymbol, STWHTokenDecimals, STWHInitialSupply, STWHClaimPeriod) {}
 
     /*************************************************************
      *  READ METHODS
@@ -171,29 +171,13 @@ contract PORToken is StandardTokenWithHodl, POR {
     /**
      * @dev Returns the current amount of tokens in the contracts reserve.
      */
-    function exchangeRate() public view returns (uint256) {
-        return totalSupply().mul(1_000_000).div(reserve());
+    function exchangeValue(uint256 TRXamount) public view returns (uint256) {
+        return totalSupply().mul(TRXamount).div(reserve());
     }
 
     /*************************************************************
      *  WRITE METHODS
      **************************************************************/
-
-    /**
-     * @dev Updates the `buyFees` of the contract.
-     */
-    function updateBuyFees(uint256 FEE_POINTS) public onlyOwner feePointsRangeCheck(FEE_POINTS) returns (bool) {
-        _updateBuyFees(FEE_POINTS);
-        return true;
-    }
-
-    /**
-     * @dev Updates the `sellFees` of the contract.
-     */
-    function updateSellFees(uint256 FEE_POINTS) public onlyOwner feePointsRangeCheck(FEE_POINTS) returns (bool) {
-        _updateSellFees(FEE_POINTS);
-        return true;
-    }
 
     /**
      * @dev See {ITRC20Hodl-claimReward}.
@@ -251,6 +235,7 @@ contract PORToken is StandardTokenWithHodl, POR {
             _mint(owner(), FEE.mul(3).div(5));
         }
         _mintHodl(FEE.div(5));
+        _calibrateFees();
         emit AssetTransfer(account, address(this), amount);
     }
 
@@ -282,7 +267,7 @@ contract PORToken is StandardTokenWithHodl, POR {
 
         address payable PAY_ACCOUNT = address(uint160(account));
         PAY_ACCOUNT.transfer(WITHDRAW_AMT);
-        //PAY_ACCOUNT.call().value(WITHDRAW_AMT)();
+        _calibrateFees();
         emit AssetTransfer(address(this), account, WITHDRAW_AMT);
     }
 }
@@ -295,7 +280,7 @@ contract UpDawg is PORToken {
     /**
      * @dev Constructor that gives _msgSender() all of existing tokens.
      */
-    constructor(string memory TokenName, string memory TokenSymbol, uint8 TokenDecimals, uint256 InitialSupply, uint256 ClaimPeriod, uint8 BasisPoint, uint256 BuyFees, uint256 SellFees, uint256 MaxFees, uint256 LaunchTime) public payable PORToken(TokenName, TokenSymbol, TokenDecimals, InitialSupply, ClaimPeriod, BasisPoint, BuyFees, SellFees, MaxFees, LaunchTime) {
+    constructor(string memory TokenName, string memory TokenSymbol, uint8 TokenDecimals, uint256 InitialSupply, uint256 ClaimPeriod, uint256 LaunchTime) public payable PORToken(TokenName, TokenSymbol, TokenDecimals, InitialSupply, ClaimPeriod, LaunchTime) {
 
     }
 
