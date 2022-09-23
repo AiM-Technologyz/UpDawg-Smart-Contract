@@ -19,18 +19,19 @@ The price formula of UDAWG token is - UDAWG Total Supply dvided by Total TRX in 
 The conclusion of Launchpad marks the inception of the dawgDEX. The exchange fee will be set at 1% for purchasing tokens and 10% for selling tokens. The exchange fee will automatically change based on the TRX reserve of the UpDawg contract, according to the below Fee Schedule.
 
 ## Fee schedule
-TRX Reserve Target	Deposit Fee (%)	Withdraw Fee (%)
-- 0 TRX <= Reserve < 1 TRX	1	10
-- 1 TRX <= Reserve < 10 TRX	0.9	9
-- 10 TRX <= Reserve < 100 TRX	0.8	8
-- 100 TRX <= Reserve < 1k TRX	0.7	7
-- 1k TRX <= Reserve < 10k TRX	0.6	6
-- 10k TRX <= Reserve < 100k TRX	0.5	5
-- 100k TRX <= Reserve < 1M TRX	0.4	4
-- 1M TRX <= Reserve < 10M TRX	0.3	3
-- 10M TRX <= Reserve < 100M TRX	0.2	2
-- 100M TRX <= Reserve < 1B TRX	0.1	1
-- Reserve >= 1B TRX	0.09	0.9
+
+- 0 TRX <= Reserve < 1 TRX      :       1% Deposit Fee;	    10% Withdraw Fee
+- 1 TRX <= Reserve < 10 TRX     :       0.9% Deposit Fee; 	9% Withdraw Fee
+- 10 TRX <= Reserve < 100 TRX	:       0.8% Deposit Fee;	8% Withdraw Fee
+- 100 TRX <= Reserve < 1k TRX	:       0.7% Deposit Fee;	7% Withdraw Fee
+- 1k TRX <= Reserve < 10k TRX	:       0.6% Deposit Fee;	6% Withdraw Fee
+- 10k TRX <= Reserve < 100k TRX	:       0.5% Deposit Fee;	5% Withdraw Fee
+- 100k TRX <= Reserve < 1M TRX	:       0.4% Deposit Fee;	4% Withdraw Fee
+- 1M TRX <= Reserve < 10M TRX	:       0.3% Deposit Fee;	3% Withdraw Fee
+- 10M TRX <= Reserve < 100M TRX	:       0.2% Deposit Fee;	2% Withdraw Fee
+- 100M TRX <= Reserve < 1B TRX	:       0.1% Deposit Fee;	1% Withdraw Fee
+- Reserve >= 1B TRX	            :       0.09% Deposit Fee;  0.9% Withdraw Fee
+
 Transaction Fee Distribution
 
 ## Functions
