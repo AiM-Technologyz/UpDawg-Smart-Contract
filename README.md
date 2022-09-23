@@ -1,1 +1,1 @@
-# UpDawg_Smart_Contract
+# UpDawg Smart Contract
