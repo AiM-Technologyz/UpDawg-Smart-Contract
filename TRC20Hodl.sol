@@ -4,76 +4,21 @@ import "./SafeMath.sol";
 import "./TRC20.sol";
 
 /**
- * @dev Interface of the TRC20Hodl standard as defined below.
- */
-interface ITRC20Hodl {
-
-    /**
-     * @dev Returns the amount of tokens locked in the contracts hodler`s pool.
-     */
-    function hodlSupply() external view returns (uint256);
-
-    /**
-     * @dev Returns the base period for claim rewards.
-     */
-    function claimPeriod() external view returns (uint256);
-
-    /**
-     * @dev Returns the timestamp of previous claim rewards by `account`.
-     */
-    function prevClaimOf(address account) external view returns (uint256);
-    
-    /*************************************************************
-     *  WRITE METHODS
-    **************************************************************/
-
-    /**
-     * @dev See {ITRC20Hodl-claimReward}.
-     */
-    function claimReward() external returns (bool, uint256, uint256);
-
-    /**
-     * @dev This function `burns`, `amount` tokens from
-     * the caller's balance and mints it to contract's hodler's pool.
-     * This decreases the `circulatingSupply` and increases the `hodlSupply`.
-     *
-     * Requirements : 
-     *      - caller must have at least `amount` token in balance.
-     *
-     * Returns : 
-     *      - bool : if or not succesfull.
-     */
-    function donateReward(uint256 amount) external returns (bool);
-
-    /*************************************************************
-     *  EVENT METHODS
-    **************************************************************/
-
-    /**
-     * @dev Emitted when `value` hodl Supply tokens are moved from one account (`from`) to
-     * another (`to`).
-     *
-     * Note that `value` may be zero.
-     */
-    event HodlTransfer(address indexed from, address indexed to, uint256 value);
-}
-
-/**
  * @dev Implementation of the {ITRC20Hodl} interface.
  */
-contract TRC20Hodl is ITRC20Hodl {
+contract TRC20Hodl {
     
     using SafeMath for uint256;
 
     uint256 private CLAIM_PERIOD;
 
     mapping (address => uint256) private _prevClaim;
-
+    
     uint256 private _hodlSupply;
 
     /**
-     * @dev Sets the values for `claimPeriod`.
-     * the value is immutable: it can only be set once during
+     * @dev Sets the values for `claimPeriod`, `symbol`, and `decimals`. All three of
+     * these values are immutable: they can only be set once during
      * construction.
      */
     constructor (uint256 claim_Period) internal {
@@ -85,21 +30,21 @@ contract TRC20Hodl is ITRC20Hodl {
     **************************************************************/
 
     /**
-     * @dev See {ITRC20Hodl-hodlSupply}.
+     * @dev Returns the amount of hodler pool tokens in existence.
      */
     function hodlSupply() public view returns (uint256) {
         return _hodlSupply;
     }
 
     /**
-     * @dev See {ITRC20Hodl-claimPeriod}.
+     * @dev Returns the base period for claim rewards.
      */
     function claimPeriod() public view returns (uint256) {
         return CLAIM_PERIOD;
     }
     
     /**
-     * @dev See {ITRC20Hodl-prevClaimOf}.
+     * @dev Returns the timestamp of previous claim rewards of `account`.
      */
     function prevClaimOf(address account) public view returns (uint256) {
         return _prevClaim[account];
@@ -109,46 +54,18 @@ contract TRC20Hodl is ITRC20Hodl {
      *  WRITE METHODS
     **************************************************************/
 
-    /**
-     * @dev See {ITRC20Hodl-claimReward}.
-     */
-    function claimReward() public returns (bool, uint256, uint256);
-
-    /**
-     * @dev See {ITRC20Hodl-donateReward}.
-     */
-    function donateReward(uint256 amount) public returns (bool);
-
     /*************************************************************
      *  INTERNAL METHODS
-     **************************************************************/
+    **************************************************************/
 
     /**
-     * @dev See {ITRC20Hodl-claimReward}.
+     * @dev Updates the timestamp of the previous
+     * claim for `account` to `now`.
      */
-    function _claimReward(address account, uint256 balance, uint256 baseSupply) internal returns (uint256, uint256) {
-        require(account != address(0), "TRC20Hodl: account is the zero address.");
+    function _updatePrevClaimOf(address account) internal {
+        require(account != address(0), "ProofOfReserve: account is the zero address.");
 
-        if (prevClaimOf(account) == 0) {
-            _prevClaim[account] = now;
-            return (0, 0);
-        } else {
-            uint256 duration = now.sub(prevClaimOf(account));
-            uint256 reward = duration.mul(balance);
-            reward = reward.mul(hodlSupply());
-            reward = reward.div(claimPeriod());
-            reward = reward.div(baseSupply);
-            uint256 inflation = reward.mul(1).div(10000);
-
-            //Reward overflow check.
-            if (reward >= hodlSupply()) {
-                _burnHodl(hodlSupply());
-            } else {
-                _burnHodl(reward);
-            }
-            _prevClaim[account] = now;
-            return (reward, inflation);
-        }
+        _prevClaim[account] = now;
     }
 
     /** @dev Creates `amount` tokens to hodl Supply, increasing
@@ -173,4 +90,17 @@ contract TRC20Hodl is ITRC20Hodl {
         _hodlSupply = _hodlSupply.sub(amount);
         emit HodlTransfer(address(this), address(0), amount);
     }
+        
+    /*************************************************************
+     *  EVENT METHODS
+    **************************************************************/
+
+    /**
+     * @dev Emitted when `value` hodl Supply tokens are moved from one account (`from`) to
+     * another (`to`).
+     *
+     * Note that `value` may be zero.
+     */
+    event HodlTransfer(address indexed from, address indexed to, uint256 value);
+
 }
