@@ -31,6 +31,7 @@ contract TRC20Detailed is ITRC20 {
     /**
      * @dev Returns the symbol of the token, usually a shorter version of the
      * name.
+     * eg. BTC is the symbol of Bitcoin.
      */
     function symbol() public view returns (string memory) {
         return _symbol;

@@ -9,13 +9,11 @@ contract POR {
 
     using SafeMath for uint256;
 
-    uint8 private BASIS_POINT;
+    uint8 private BASIS_POINT = 4;
 
     uint256 private BUY_FEES;
 
     uint256 private SELL_FEES;
-
-    uint256 private MAX_FEES;
 
     uint256 private LAUNCH_TIME;
 
@@ -24,12 +22,9 @@ contract POR {
      * these values are immutable: they can only be set once during
      * construction.
      */
-    constructor (uint8 POR_BASIS_POINT, uint256 POR_BUY_FEES, uint256 POR_WITHDRAW_FEE_POINTS, uint256 POR_MAX_FEES, uint256 LAUNCHTIME) internal {
-        BASIS_POINT = POR_BASIS_POINT;
-        BUY_FEES = POR_BUY_FEES;
-        SELL_FEES = POR_WITHDRAW_FEE_POINTS;
-        MAX_FEES = POR_MAX_FEES;
+    constructor (uint256 LAUNCHTIME) internal {
         LAUNCH_TIME = LAUNCHTIME;
+        _calibrateFees();
     }
 
     /*************************************************************
@@ -49,14 +44,6 @@ contract POR {
      */
     modifier onlyIfNotLaunched() {
         require(now < LAUNCH_TIME, "ProofOfReserve: Launchpad has ended. Complete contract Launched!");
-        _;
-    }
-
-    /**
-     * @dev Throws if called by any account other than the owner.
-     */
-    modifier feePointsRangeCheck(uint256 FEE_POINTS) {
-        require(FEE_POINTS <= maxFees() && FEE_POINTS > 0, "ProofOfReserve: FEE_POINTS out of range error.");
         _;
     }
 
@@ -100,20 +87,50 @@ contract POR {
     function sellFees() public view returns (uint256) {
         return SELL_FEES;
     }
-
-    /**
-     * @dev Returns the maxFees of the contract.
-     * For example, if `basisPoint` equals `3`, a `maxFees` of `25` represents a
-     * max settable fee of 2.5% (per cent or percentage) and should
-     * be displayed to a user as `2.5%` by the formula (maxFees * 100/ (10 ** basisPoint)).
-     */
-    function maxFees() public view returns (uint256) {
-        return MAX_FEES;
-    }
     
     /*************************************************************
      *  INTERNAL METHODS
     **************************************************************/
+
+    /**
+     * @dev Checks the reserve and Updates the fees of the contract.
+     */
+    function _calibrateFees() internal {
+        if (reserve() >= 0 && reserve() < 1 * (10 ** 6)) {
+            _updateBuyFees(100);
+            _updateSellFees(1000);
+        } else if (reserve() >= 1 * (10 ** 6) && reserve() < 10 * (10 ** 6)) {            
+            _updateBuyFees(90);
+            _updateSellFees(900);
+        } else if (reserve() >= 10 * (10 ** 6) && reserve() < 100 * (10 ** 6)) {            
+            _updateBuyFees(80);
+            _updateSellFees(800);
+        } else if (reserve() >= 100 * (10 ** 6) && reserve() < 1000 * (10 ** 6)) {            
+            _updateBuyFees(70);
+            _updateSellFees(700);
+        } else if (reserve() >= 1000 * (10 ** 6) && reserve() < 10_000 * (10 ** 6)) {            
+            _updateBuyFees(60);
+            _updateSellFees(600);
+        } else if (reserve() >= 10_000 * (10 ** 6) && reserve() < 100_000 * (10 ** 6)) {            
+            _updateBuyFees(50);
+            _updateSellFees(500);
+        } else if (reserve() >= 100_000 * (10 ** 6) && reserve() < 1_000_000 * (10 ** 6)) {            
+            _updateBuyFees(40);
+            _updateSellFees(400);
+        } else if (reserve() >= 1_000_000 * (10 ** 6) && reserve() < 10_000_000 * (10 ** 6)) {            
+            _updateBuyFees(30);
+            _updateSellFees(300);
+        } else if (reserve() >= 10_000_000 * (10 ** 6) && reserve() < 100_000_000 * (10 ** 6)) {            
+            _updateBuyFees(20);
+            _updateSellFees(200);
+        } else if (reserve() >= 100_000_000 * (10 ** 6) && reserve() < 1_000_000_000 * (10 ** 6)) {            
+            _updateBuyFees(10);
+            _updateSellFees(100);
+        } else if (reserve() >= 1_000_000_000 * (10 ** 6)) {            
+            _updateBuyFees(9);
+            _updateSellFees(90);
+        }
+    }
 
     /**
      * @dev Updates the `buyFees` of the contract.
