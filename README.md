@@ -21,17 +21,17 @@ The conclusion of Launchpad marks the inception of the dawgDEX. The exchange fee
 
 ## Fee schedule
 TRX Reserve Target	Deposit Fee (%)	Withdraw Fee (%)
-0 <= Reserve < 1	1	10
-1 <= Reserve < 10	0.9	9
-10 <= Reserve < 100	0.8	8
-100 <= Reserve < 1k	0.7	7
-1k <= Reserve < 10k	0.6	6
-10k <= Reserve < 100k	0.5	5
-100k <= Reserve < 1M	0.4	4
-1M <= Reserve < 10M	0.3	3
-10M <= Reserve < 100M	0.2	2
-100M <= Reserve < 1B	0.1	1
-Reserve >= 1B	0.09	0.9
+- 0 <= Reserve < 1	1	10
+- 1 <= Reserve < 10	0.9	9
+- 10 <= Reserve < 100	0.8	8
+- 100 <= Reserve < 1k	0.7	7
+- 1k <= Reserve < 10k	0.6	6
+- 10k <= Reserve < 100k	0.5	5
+- 100k <= Reserve < 1M	0.4	4
+- 1M <= Reserve < 10M	0.3	3
+- 10M <= Reserve < 100M	0.2	2
+- 100M <= Reserve < 1B	0.1	1
+- Reserve >= 1B	0.09	0.9
 Transaction Fee Distribution
 
 ## Functions
