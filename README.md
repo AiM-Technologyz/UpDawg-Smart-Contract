@@ -20,7 +20,9 @@ The conclusion of Launchpad marks the inception of the dawgDEX. The exchange fee
 
 ## Fee schedule
 
-- 0 TRX <= Reserve < 1 TRX      :       1% Deposit Fee;	    10% Withdraw Fee
+1. 0 TRX <= Reserve < 1 TRX      :       
+   - 1% Deposit Fee;
+   - 10% Withdraw Fee
 - 1 TRX <= Reserve < 10 TRX     :       0.9% Deposit Fee; 	9% Withdraw Fee
 - 10 TRX <= Reserve < 100 TRX	:       0.8% Deposit Fee;	8% Withdraw Fee
 - 100 TRX <= Reserve < 1k TRX	:       0.7% Deposit Fee;	7% Withdraw Fee
