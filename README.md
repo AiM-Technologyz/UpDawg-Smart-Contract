@@ -1,7 +1,10 @@
 # UpDawg Smart Contract
 
-Satoshi Nakamoto - 
+Satoshi Nakamoto -
+
 > “If you don't believe me or don't get it, I don't have time to try to convince you, sorry.”
+
+<hr>
 
 ## What is UpDawg?
 UpDawg is a TRC20 smart contract on the TRON blockchain. The smart contract consists of a token(UDAWG) with an in-built DEX(dawgDEX). UDAWG is a Proof Of Reserve token backed by TRX. UDAWG can be purchased & sold on the dawgDEX.
@@ -99,15 +102,21 @@ this action allows anyone to send UDAWG to HODLersPool.
 this function will be functional only during the Launchpad. It will allow users to mint 1 million UDAWG tokens per claim.
 
 
-Every function will be executed by using the TronLink interface directly from the DEX website, protected by TLS. TRON blockchain native token (TRX) will be used for implementing UpDAWG operations. Generally fee will be less than 40 TRX and can be laid down to 0 TRX if the user has sufficient Energy & bandwidth available.
+Every function will be executed by using the TronLink extension directly from the official [TRON Blockchain Explorer website](https://tronscan.org/#/), protected by TLS. TRON blockchain native token (TRX) will be used for implementing UpDAWG operations. Generally fee will be less than 40 TRX and can be laid down to 0 TRX if the user has sufficient Energy & bandwidth available.
 
 
 ## Transparency
 The UpDAWG smart contract manages the UDAWG token & the TRX reserve, ensuring a fully decentralised & trustless process. Contract owner can not interfere with the smart contract’s specifications except for 2 predetermined functions(updateBuyFee &updateSellFee), hard coded in the smart contract code, as the code is open source.
+
 <hr>
-There is no method in the UpDAWG smart contract to withdraw the TRX Reserve or UDAWG HODLpool. The internal reserves in the smart contract is viewable to make sure token value is backed by the expected amount of collateral. To look into the reserve users can visit UpDAWG website or TRON blockchain explorer, as UpDAWG is an TRC20 smart contract all the reserves are on-chain.
+
+There is no method in the UpDAWG smart contract to withdraw the TRX Reserve or UDAWG HODLpool. The internal reserves in the smart contract is viewable to make sure token value is backed by the expected amount of collateral.
+To look into the reserve users can visit UpDAWG website or TRON blockchain explorer, as UpDAWG is an TRC20 smart contract all the reserves are on-chain.
+
 To ensure no chance of scam or security risk, the UpDAWG smart contract will be audited.
 
-“We shouldn’t delay forever until every possible feature is done. There’s always going to be one more thing to do.”
+Satoshi Nakamoto -
 
-- Satoshi Nakamoto
+> “We shouldn’t delay forever until every possible feature is done. There’s always going to be one more thing to do.”
+
+<hr>
