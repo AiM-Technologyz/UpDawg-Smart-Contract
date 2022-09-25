@@ -102,7 +102,7 @@ this function will be functional only during the Launchpad. It will allow users 
 Every function will be executed by using the TronLink interface directly from the DEX website, protected by TLS. TRON blockchain native token (TRX) will be used for implementing UpDAWG operations. Generally fee will be less than 40 TRX and can be laid down to 0 TRX if the user has sufficient Energy & bandwidth available.
 
 
-Transparency
+## Transparency
 The UpDAWG smart contract manages the UDAWG token & the TRX reserve, ensuring a decentralised & trustless process. Contract owner can not interfere with the smart contract’s specifications except for 2 predetermined functions(updateBuyFee &updateSellFee), hard coded in the smart contract code, as the code is open source.
 There is no method in the UpDAWG smart contract to withdraw the TRX Reserve or UDAWG HODLpool. The internal reserves in the smart contract is viewable to make sure token value is backed by the expected amount of collateral. To look into the reserve users can visit UpDAWG website or TRON blockchain explorer, as UpDAWG is an TRC20 smart contract all the reserves are on-chain.
 To ensure no chance of scam or security risk, the UpDAWG smart contract will be audited.
