@@ -91,10 +91,12 @@ this event will allow HODLers to claim their share from HODLersPool and mint 0.0
 transferring UDAWG will also execute the ‘Claim Reward’ function for both the sender & receiver.
 
 
-Donate Reward : this action allows anyone to send UDAWG to HODLersPool.
+### Donate Reward :
+this action allows anyone to send UDAWG to HODLersPool.
 
 
-Claim Airdrop : this function will be functional only during the Launchpad. It will allow users to mint 1 million UDAWG tokens per claim.
+### Claim Airdrop :
+this function will be functional only during the Launchpad. It will allow users to mint 1 million UDAWG tokens per claim.
 
 
 Every function will be executed by using the TronLink interface directly from the DEX website, protected by TLS. TRON blockchain native token (TRX) will be used for implementing UpDAWG operations. Generally fee will be less than 40 TRX and can be laid down to 0 TRX if the user has sufficient Energy & bandwidth available.
