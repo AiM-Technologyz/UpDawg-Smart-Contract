@@ -13,7 +13,8 @@ Once deployed on the blockchain, the Launchpad will be in effect and initially t
 Once deployed on the blockchain, the Launchpad will be in effect and initially the TRX Reserve will have 1 TRX sent by DawgDAO in exchange for 21 million UDAWG tokens to set the price of UDAWG tokens as : 21 Million UDAWG = 1 TRX.
 
 ## Price Formula
-The price formula of UDAWG token is - UDAWG Total Supply dvided by Total TRX in UpDawg Reserve.
+The price formula of UDAWG token =
+(Total Supply of UDAWG Token) / (Total TRX in UpDawg Reserve)
 
 ## dawgDEX
 The conclusion of Launchpad marks the inception of the dawgDEX. The exchange fee will be set at 1% for purchasing tokens and 10% for selling tokens. The exchange fee will automatically change based on the TRX reserve of the UpDawg contract, according to the below Fee Schedule.
