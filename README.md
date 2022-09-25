@@ -21,6 +21,8 @@ The conclusion of Launchpad marks the inception of the dawgDEX. The exchange fee
 
 ## Fee schedule
 
+The Transaction Fee Distribution is as follows :
+
 - 0 TRX <= Reserve < 1 TRX      :       
   - 1% Deposit Fee;
   - 10% Withdraw Fee;
@@ -41,14 +43,29 @@ The conclusion of Launchpad marks the inception of the dawgDEX. The exchange fee
   - 0.6% Deposit Fee;
   - 6% Withdraw Fee;
 
-- 10k TRX <= Reserve < 100k TRX	:       0.5% Deposit Fee;	5% Withdraw Fee;
-- 100k TRX <= Reserve < 1M TRX	:       0.4% Deposit Fee;	4% Withdraw Fee;
-- 1M TRX <= Reserve < 10M TRX	:       0.3% Deposit Fee;	3% Withdraw Fee;
-- 10M TRX <= Reserve < 100M TRX	:       0.2% Deposit Fee;	2% Withdraw Fee
-- 100M TRX <= Reserve < 1B TRX	:       0.1% Deposit Fee;	1% Withdraw Fee
-- Reserve >= 1B TRX	            :       0.09% Deposit Fee;  0.9% Withdraw Fee
+- 10k TRX <= Reserve < 100k TRX	:
+  - 0.5% Deposit Fee;
+  - 5% Withdraw Fee;
 
-Transaction Fee Distribution
+- 100k TRX <= Reserve < 1M TRX	:
+  - 0.4% Deposit Fee;
+  - 4% Withdraw Fee;
+
+- 1M TRX <= Reserve < 10M TRX	  :
+  - 0.3% Deposit Fee;
+  - 3% Withdraw Fee;
+
+- 10M TRX <= Reserve < 100M TRX	:
+  - 0.2% Deposit Fee;
+  - 2% Withdraw Fee;
+
+- 100M TRX <= Reserve < 1B TRX	:
+  - 0.1% Deposit Fee;
+  - 1% Withdraw Fee;
+
+- Reserve >= 1B TRX	            :
+  - 0.09% Deposit Fee;
+  - 0.9% Withdraw Fee;
 
 ## Functions
 The UpDawg smart contract implements the standard TRC20 functions along with the following additional functions :
