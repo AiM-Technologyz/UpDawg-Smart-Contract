@@ -124,9 +124,6 @@ name()
 <br>
 <br>
 
-<br>
-<br>
-
 #### Symbol
 - Function Name: ***symbol***
 - Function Type: ***READ***
@@ -137,7 +134,7 @@ name()
   - return[0]: ***[@type: `string`]***
 - Function Signature: 
 ```
-name()
+symbol()
 ```
 
 <br>
