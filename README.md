@@ -126,13 +126,6 @@ name()
 <br>
 <br>
 
-    /**
-     * @dev Returns the name of the token.
-     */
-    function name() public view returns (string memory) {
-        return _name;
-    }
-
 ### Total Supply
 This function returns the total supply of the token.
 
