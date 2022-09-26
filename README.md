@@ -107,7 +107,6 @@ The **UpDawg Smart Contract** implements the standard TRC20 functions along with
 
 <br>
 <br>
-<br>
 
 #### Name
 - Function Name: ***name***
@@ -122,14 +121,6 @@ The **UpDawg Smart Contract** implements the standard TRC20 functions along with
 name()
 ```
 
-<br>
-<br>
-<br>
-
-#### Total Supply
-This function returns the total supply of the token.
-
-<br>
 <br>
 <br>
 
