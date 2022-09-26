@@ -73,6 +73,9 @@ The Transaction Fee Distribution is as follows :
 ## Functions
 The UpDawg smart contract implements the standard TRC20 functions along with the following additional functions :
 
+### totalSupply() :
+This function returns the total supply of the token.
+
 
 ### Buy : 
 This function will transfer user specified TRX to the UpDAWG smart contract address , and mint UDAWG on the user address depending on the current price stated on dawgDEX
