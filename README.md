@@ -115,6 +115,8 @@ To look into the reserve users can visit UpDAWG website or TRON blockchain explo
 
 To ensure no chance of scam or security risk, the UpDAWG smart contract will be audited.
 
+<br>
+
 Satoshi Nakamoto -
 
 > “We shouldn’t delay forever until every possible feature is done. There’s always going to be one more thing to do.”
