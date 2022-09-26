@@ -117,9 +117,13 @@ To ensure no chance of scam or security risk, the UpDAWG smart contract will be 
 
 <br>
 
+<br>
+
 Satoshi Nakamoto -
 
 > “We shouldn’t delay forever until every possible feature is done. There’s always going to be one more thing to do.”
+
+<br>
 
 <br>
 
