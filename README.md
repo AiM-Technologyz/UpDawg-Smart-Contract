@@ -112,7 +112,7 @@ The **UpDawg Smart Contract** implements the standard TRC20 functions along with
 ### Name
 - Function Name: ***name***
 - Function Type: ***READ***
-- Function Description: ***Returns the name of the `token`. This is an immutable state variable; i.e. It can only be set at the time of deployment and can never be changed.***
+- Function Description: ***Returns the name of the `token`. This is an immutable state variable; i.e. It can only be set at the time of deployment and can never be changed. eg. `UpDawg`***
 - Function Requirements: ***`-nil-`***
 - Function Parameters: ***`-nil-`***
 - Function Return: 
