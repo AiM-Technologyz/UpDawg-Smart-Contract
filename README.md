@@ -124,6 +124,25 @@ name()
 <br>
 <br>
 
+<br>
+<br>
+
+#### Symbol
+- Function Name: ***symbol***
+- Function Type: ***READ***
+- Function Description: ***Returns the symbol of the token, usually a shorter version of the name. eg. `UDAWG`***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `string`]***
+- Function Signature: 
+```
+name()
+```
+
+<br>
+<br>
+
 ### Balance Of
 - Function Name: ***balanceOf***
 - Function Type: ***READ***

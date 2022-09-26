@@ -37,9 +37,9 @@ contract TRC20 is Ownable, ITRC20 {
     mapping (address => mapping (address => uint256)) private _allowances;
 
     uint256 private _circulatingSupply;
-
+    
     /**
-     * @dev See {ITRC20-circulatingSupply}.
+     * @dev Returns the amount of tokens in existence.
      */
     function circulatingSupply() public view returns (uint256) {
         return _circulatingSupply;
