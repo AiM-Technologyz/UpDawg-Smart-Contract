@@ -77,6 +77,18 @@ The UpDawg smart contract implements the standard TRC20 functions along with the
 This function returns the total supply of the token.
 
 
+### Balance Of :
+This function returns the amount of tokens owned by the specific `account`.
+```
+
+    /**
+     * @dev Returns the amount of tokens owned by `account`.
+     */
+    function balanceOf(address account) external view returns (uint256);
+
+```
+
+
 ### Buy : 
 This function will transfer user specified TRX to the UpDAWG smart contract address , and mint UDAWG on the user address depending on the current price stated on dawgDEX
 
