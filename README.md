@@ -152,7 +152,7 @@ symbol()
 ```
 decimals()
 ```
-- Function Note: ***[@type: `string`]***
+- Function Note: ***This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {ITRC20-balanceOf} and {ITRC20-transfer}.***
 
 <br>
 <br>
