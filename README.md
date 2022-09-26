@@ -174,10 +174,19 @@ To ensure no chance of scam or security risk, the **UpDawg Smart Contract** will
 <hr>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+
 **Satoshi Nakamoto -**
 
 > ***“We shouldn’t delay forever until every possible feature is done. There’s always going to be one more thing to do.”***
 
+<br>
+<br>
+<br>
+<br>
 <br>
 <hr>
 <br>
