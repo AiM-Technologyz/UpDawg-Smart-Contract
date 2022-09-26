@@ -179,34 +179,6 @@ balanceOf(address account)
 
 <br>
 <br>
-<br>
-
-### Buy
-This function will transfer user specified TRX to the **UpDawg Smart Contract** address , and mint UDAWG on the user address depending on the current price stated on dawgDEX
-
-
-### Sell
-This function will Burn user specified UDAWG , and transfer TRX to the user address depending on the current price stated on dawgDEX. At any given time, only 90% of UDAWG can be sold on dawgDEX.
-
-
-### Burn
-This operation can burn any number of UDAWG tokens.
-
-
-### Claim Reward
-This function will allow HODLers to claim their share from HODLersPool and mint 0.01% new tokens of their reward.
-
-
-### Transfer
-transferring UDAWG will also execute the ‘Claim Reward’ function for both the sender & receiver.
-
-
-### Donate Reward :
-This function allows anyone to send UDAWG to HODLersPool.
-
-
-### Claim Airdrop :
-This function will be functional only during the Launchpad. It will allow users to mint 1 million UDAWG tokens per claim.
 
 <br>
 <hr>
