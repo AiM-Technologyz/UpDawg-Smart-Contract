@@ -1,8 +1,8 @@
 # UpDawg Smart Contract
 
-Satoshi Nakamoto -
+**Satoshi Nakamoto -**
 
-> “If you don't believe me or don't get it, I don't have time to try to convince you, sorry.”
+> ***“If you don't believe me or don't get it, I don't have time to try to convince you, sorry.”***
 
 <br>
 <hr>
