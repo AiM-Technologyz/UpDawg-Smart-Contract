@@ -140,6 +140,23 @@ symbol()
 <br>
 <br>
 
+#### Decimals
+- Function Name: ***decimals***
+- Function Type: ***READ***
+- Function Description: ***Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5,05` (`505 / 10 ** 2`). Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `string`]***
+- Function Signature: 
+```
+decimals()
+```
+- Function Note: ***[@type: `string`]***
+
+<br>
+<br>
+
 ### Balance Of
 - Function Name: ***balanceOf***
 - Function Type: ***READ***

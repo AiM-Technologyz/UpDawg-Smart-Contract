@@ -39,7 +39,7 @@ contract TRC20 is Ownable, ITRC20 {
     uint256 private _circulatingSupply;
     
     /**
-     * @dev Returns the amount of tokens in existence.
+     * @dev Returns the sum of amount of tokens in contract-user's accounts.
      */
     function circulatingSupply() public view returns (uint256) {
         return _circulatingSupply;
