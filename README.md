@@ -98,7 +98,8 @@ The Transaction Fee Distribution is as follows :
   - 0.9% Withdraw Fee;
 
 <br>
-<hr>
+<br>
+<br>
 <br>
 
 ## Functions
