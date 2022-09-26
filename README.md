@@ -81,7 +81,7 @@ This function returns the total supply of the token.
 - Function Name: ***balanceOf***
 - Function Type: ***READ***
 - Function Description: ***This function returns the amount of tokens owned by the specific `account`.***
-- Function Requirements: *** `-nil-` ***
+- Function Requirements: ***`-nil-`***
 - Function Parameters: 
   - param1: ***[`account`][@type: `address`]***
 - Function Return: 
