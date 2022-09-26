@@ -24,7 +24,6 @@ Once deployed on the blockchain, the Launchpad will be in effect and initially t
 Once deployed on the blockchain, the Launchpad will be in effect and initially the TRX Reserve will have 1 TRX sent by DawgDAO in exchange for 21 million UDAWG tokens to set the price of UDAWG tokens as : 21 Million UDAWG = 1 TRX.
 
 <br>
-<hr>
 <br>
 
 ## Price Formula
