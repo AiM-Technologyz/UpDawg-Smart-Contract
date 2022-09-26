@@ -112,12 +112,12 @@ The **UpDawg Smart Contract** implements the standard TRC20 functions along with
 ### Name
 - Function Name: ***name***
 - Function Type: ***READ***
-- Function Description: ***This function returns the amount of tokens owned by the specific `account`.***
+- Function Description: ***Returns the name of the token.***
 - Function Requirements: ***`-nil-`***
 - Function Parameters: 
   - param1: ***[`account`][@type: `address`]***
 - Function Return: 
-  - param1: ***[@type: `uint256]`***
+  - param1: ***[@type: `string`]***
 - Function Signature: 
 ```
 balanceOf(account)
