@@ -73,7 +73,7 @@ The Transaction Fee Distribution is as follows :
 ## Functions
 The UpDawg smart contract implements the standard TRC20 functions along with the following additional functions :
 
-### totalSupply() :
+### Total Supply :
 This function returns the total supply of the token.
 
 
