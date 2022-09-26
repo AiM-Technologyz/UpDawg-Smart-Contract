@@ -12,7 +12,6 @@ Satoshi Nakamoto -
 UpDawg is a TRC20 smart contract on the TRON blockchain. The smart contract consists of a token(UDAWG) with an in-built DEX(dawgDEX). UDAWG is a Proof Of Reserve token backed by TRX. UDAWG can be purchased & sold on the dawgDEX.
 
 <br>
-<hr>
 <br>
 
 ## Technology
