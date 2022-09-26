@@ -77,13 +77,13 @@ The UpDawg smart contract implements the standard TRC20 functions along with the
 This function returns the total supply of the token.
 
 
-### Balance Of :
-This function returns the amount of tokens owned by the specific `account`.
+### Balance Of
 - Function Name: ***balanceOf***
 - Function Type: ***READ***
+- Function Description: ***This function returns the amount of tokens owned by the specific `account`.***
 - Function Signature: ***balanceOf***
 - Function Parameters: ***balanceOf***
-- Function Name: ***balanceOf***
+- Function Return: ***balanceOf***
 <!--```
 
     /**
