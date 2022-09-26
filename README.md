@@ -135,7 +135,7 @@ name()
   - return[0]: ***[@type: `uint256]`***
 - Function Signature: 
 ```
-balanceOf(account)
+balanceOf(address account)
 ```
 - Function Dev-Note: ***balanceOf***
 
