@@ -18,7 +18,6 @@ UpDawg is a TRC20 smart contract on the TRON blockchain. The smart contract cons
 Once deployed on the blockchain, the Launchpad will be in effect and initially the TRX Reserve will have 0.000001 TRX sent by DawgDAO in exchange for 21 UDAWG tokens to set the price of UDAWG tokens as : 21 Million UDAWG = 1 TRX.
 
 <br>
-<hr>
 <br>
 
 ## Launchpad
