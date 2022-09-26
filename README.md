@@ -75,19 +75,19 @@ The UpDawg smart contract implements the standard TRC20 functions along with the
 
 
 ### Buy : 
-this action will transfer user specified TRX to the UpDAWG smart contract address , and mint UDAWG on the user address depending on the current price stated on dawgDEX
+This function will transfer user specified TRX to the UpDAWG smart contract address , and mint UDAWG on the user address depending on the current price stated on dawgDEX
 
 
 ### Sell : 
-this action will Burn user specified UDAWG , and transfer TRX to the user address depending on the current price stated on dawgDEX. At any given time, only 90% of UDAWG can be sold on dawgDEX.
+This function will Burn user specified UDAWG , and transfer TRX to the user address depending on the current price stated on dawgDEX. At any given time, only 90% of UDAWG can be sold on dawgDEX.
 
 
 ### Burn : 
-this operation can burn any number of UDAWG tokens.
+This operation can burn any number of UDAWG tokens.
 
 
 ### Claim Reward : 
-this event will allow HODLers to claim their share from HODLersPool and mint 0.01% new tokens of their reward.
+This function will allow HODLers to claim their share from HODLersPool and mint 0.01% new tokens of their reward.
 
 
 ### Transfer : 
@@ -95,11 +95,11 @@ transferring UDAWG will also execute the ‘Claim Reward’ function for both th
 
 
 ### Donate Reward :
-this action allows anyone to send UDAWG to HODLersPool.
+This function allows anyone to send UDAWG to HODLersPool.
 
 
 ### Claim Airdrop :
-this function will be functional only during the Launchpad. It will allow users to mint 1 million UDAWG tokens per claim.
+This function will be functional only during the Launchpad. It will allow users to mint 1 million UDAWG tokens per claim.
 
 
 Every function will be executed by using the TronLink extension directly from the official [TRON Blockchain Explorer website](https://tronscan.org/#/), protected by TLS. TRON blockchain native token (TRX) will be used for implementing UpDAWG operations. Generally fee will be less than 40 TRX and can be laid down to 0 TRX if the user has sufficient Energy & bandwidth available.
