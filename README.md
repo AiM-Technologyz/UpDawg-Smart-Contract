@@ -105,9 +105,42 @@ The Transaction Fee Distribution is as follows :
 ## Functions
 The **UpDawg Smart Contract** implements the standard TRC20 functions along with the following additional functions :
 
+<br>
+<br>
+<br>
+
+### Name
+- Function Name: ***name***
+- Function Type: ***READ***
+- Function Description: ***This function returns the amount of tokens owned by the specific `account`.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: 
+  - param1: ***[`account`][@type: `address`]***
+- Function Return: 
+  - param1: ***[@type: `uint256]`***
+- Function Signature: 
+```
+balanceOf(account)
+```
+- Function Dev-Note: ***balanceOf***
+
+<br>
+<br>
+<br>
+
+    /**
+     * @dev Returns the name of the token.
+     */
+    function name() public view returns (string memory) {
+        return _name;
+    }
+
 ### Total Supply
 This function returns the total supply of the token.
 
+<br>
+<br>
+<br>
 
 ### Balance Of
 - Function Name: ***balanceOf***
@@ -124,6 +157,9 @@ balanceOf(account)
 ```
 - Function Dev-Note: ***balanceOf***
 
+<br>
+<br>
+<br>
 
 ### Buy
 This function will transfer user specified TRX to the **UpDawg Smart Contract** address , and mint UDAWG on the user address depending on the current price stated on dawgDEX
