@@ -79,14 +79,15 @@ This function returns the total supply of the token.
 
 ### Balance Of :
 This function returns the amount of tokens owned by the specific `account`.
-```
+**Function Name:** ***balanceOf***
+<!--```
 
     /**
      * @dev Returns the amount of tokens owned by `account`.
      */
     function balanceOf(address account) external view returns (uint256);
 
-```
+```-->
 
 
 ### Buy : 
