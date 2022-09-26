@@ -214,13 +214,18 @@ Every function will be executed by using the TronLink extension directly from th
 
 ## Transparency
 The **UpDawg Smart Contract** manages the UDAWG token & the TRX reserve, ensuring a fully decentralised & trustless process. Contract owner can not interfere with the smart contract’s specifications except for 2 predetermined functions(updateBuyFee &updateSellFee), hard coded in the smart contract code, as the code is open source.
+
 <br>
 <br>
+
 There is no method in the **UpDawg Smart Contract** to withdraw the TRX Reserve or UDAWG HODLpool. The internal reserves in the smart contract is viewable to make sure token value is backed by the expected amount of collateral.
 To look into the reserve users can visit UpDAWG website or TRON blockchain explorer, as UpDAWG is an TRC20 smart contract all the reserves are on-chain.
+
 <br>
 <br>
+
 To ensure no chance of scam or security risk, the **UpDawg Smart Contract** will be audited.
+
 <br>
 <br>
 <hr>
