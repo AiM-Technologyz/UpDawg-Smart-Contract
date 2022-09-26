@@ -1,11 +1,14 @@
-# **UpDawg Smart Contract**
+# UpDawg Smart Contract
 
 **Satoshi Nakamoto -**
 
 > ***“If you don't believe me or don't get it, I don't have time to try to convince you, sorry.”***
 
 <br>
+<br>
 <hr>
+<br>
+<br>
 <br>
 <br>
 
