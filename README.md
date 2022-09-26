@@ -147,7 +147,7 @@ symbol()
 - Function Requirements: ***`-nil-`***
 - Function Parameters: ***`-nil-`***
 - Function Return: 
-  - return[0]: ***[@type: `string`]***
+  - return[0]: ***[@type: `uint8`]***
 - Function Signature: 
 ```
 decimals()
