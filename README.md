@@ -40,7 +40,6 @@ The price formula of UDAWG token =
 The conclusion of Launchpad marks the inception of the dawgDEX. The exchange fee will be set at 1% for purchasing tokens and 10% for selling tokens. The exchange fee will automatically change based on the TRX reserve of the UpDawg contract, according to the below Fee Schedule.
 
 <br>
-<hr>
 <br>
 
 ## Fee schedule
