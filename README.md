@@ -162,7 +162,7 @@ decimals()
 <br>
 <br>
 
-### Balance Of
+#### Balance Of
 - Function Name: ***balanceOf***
 - Function Type: ***READ***
 - Function Description: ***This function returns the amount of tokens owned by the specific `account`.***
