@@ -109,7 +109,7 @@ The **UpDawg Smart Contract** implements the standard TRC20 functions along with
 <br>
 <br>
 
-### Name
+#### Name
 - Function Name: ***name***
 - Function Type: ***READ***
 - Function Description: ***Returns the name of the `token`. This is an immutable state variable; i.e. It can only be set at the time of deployment and can never be changed. eg. `UpDawg`***
@@ -126,7 +126,7 @@ name()
 <br>
 <br>
 
-### Total Supply
+#### Total Supply
 This function returns the total supply of the token.
 
 <br>
