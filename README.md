@@ -59,8 +59,8 @@ The conclusion of Launchpad marks the inception of the dawgDEX. The exchange fee
 The Transaction Fee Distribution is as follows :
 
 - 0 TRX <= Reserve < 1 TRX      :       
-  - 1% Deposit Fee;
-  - 10% Withdraw Fee;
+  - ***1% Deposit Fee;***
+  - ***10% Withdraw Fee;***
 
 - 1 TRX <= Reserve < 10 TRX     :
   - 0.9% Deposit Fee;
