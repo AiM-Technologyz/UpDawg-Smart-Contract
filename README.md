@@ -36,6 +36,7 @@
 1. [What is UpDawg?](#what-is-updawg)
 2. [Technology](#technology)
 3. [Launchpad](#launchpad)
+4. [Price Formula](#price-formula)
 
 <br>
 <br>
