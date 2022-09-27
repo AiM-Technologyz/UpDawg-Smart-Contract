@@ -217,6 +217,23 @@ hodlSupply()
 <br>
 <br>
 
+#### Total Supply
+- Function Name: ***totalSupply***
+- Function Type: ***READ***
+- Function Description: ***Returns the sellFees of the contract. For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a withdraw fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+totalSupply()
+```
+- Function Dev-Note: ***totalSupply***
+
+<br>
+<br>
+
 #### Allowance
 - Function Name: ***allowance***
 - Function Type: ***READ***
@@ -335,23 +352,6 @@ buyFees()
 sellFees()
 ```
 - Function Dev-Note: ***sellFees***
-
-<br>
-<br>
-
-#### Total Supply
-- Function Name: ***totalSupply***
-- Function Type: ***READ***
-- Function Description: ***Returns the sellFees of the contract. For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a withdraw fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
-- Function Requirements: ***`-nil-`***
-- Function Parameters: ***`-nil-`***
-- Function Return: 
-  - return[0]: ***[@type: `uint256]`***
-- Function Signature: 
-```
-totalSupply()
-```
-- Function Dev-Note: ***totalSupply***
 
 <br>
 <br>
