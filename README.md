@@ -252,6 +252,74 @@ totalSupply()
 <br>
 <br>
 
+#### Reserve
+- Function Name: ***reserve***
+- Function Type: ***READ***
+- Function Description: ***Returns the amount of asset tokens in the contracts reserve.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+reserve()
+```
+- Function Dev-Note: ***reserve***
+
+<br>
+<br>
+
+#### Basis Point
+- Function Name: ***basisPoint***
+- Function Type: ***READ***
+- Function Description: ***Returns the number of basis Points used by the contract as ratio representation.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+basisPoint()
+```
+- Function Dev-Note: ***This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract. For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).***
+
+<br>
+<br>
+
+#### Buy Fees
+- Function Name: ***buyFees***
+- Function Type: ***READ***
+- Function Description: ***Returns the buyFees of the contract.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+buyFees()
+```
+- Function Dev-Note: ***This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract. For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (buyFees * 100/ (10 ** basisPoint)).***
+
+<br>
+<br>
+
+#### Sell Fees
+- Function Name: ***sellFees***
+- Function Type: ***READ***
+- Function Description: ***Returns the sell fees of the contract.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+sellFees()
+```
+- Function Dev-Note: ***This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract. For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a withdraw fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
+
+<br>
+<br>
+
 #### Balance Of
 - Function Name: ***balanceOf***
 - Function Type: ***READ***
@@ -324,68 +392,17 @@ prevClaimOf(address account)
 <br>
 <br>
 
-#### Reserve
-- Function Name: ***reserve***
-- Function Type: ***READ***
-- Function Description: ***Returns the amount of asset tokens in the contracts reserve.***
+#### Approve
+- Function Name: ***approve***
+- Function Type: ***WRITE***
+- Function Description: ***Sets `amount` as the allowance of `spender` over the caller's tokens.***
 - Function Requirements: ***`-nil-`***
 - Function Parameters: ***`-nil-`***
 - Function Return: 
   - return[0]: ***[@type: `uint256]`***
 - Function Signature: 
 ```
-reserve()
-```
-- Function Dev-Note: ***reserve***
-
-<br>
-<br>
-
-#### Basis Point
-- Function Name: ***basisPoint***
-- Function Type: ***READ***
-- Function Description: ***Returns the number of basis Points used by the contract as ratio representation.***
-- Function Requirements: ***`-nil-`***
-- Function Parameters: ***`-nil-`***
-- Function Return: 
-  - return[0]: ***[@type: `uint256]`***
-- Function Signature: 
-```
-basisPoint()
-```
-- Function Dev-Note: ***This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract. For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).***
-
-<br>
-<br>
-
-#### Buy Fees
-- Function Name: ***buyFees***
-- Function Type: ***READ***
-- Function Description: ***Returns the buyFees of the contract.***
-- Function Requirements: ***`-nil-`***
-- Function Parameters: ***`-nil-`***
-- Function Return: 
-  - return[0]: ***[@type: `uint256]`***
-- Function Signature: 
-```
-buyFees()
-```
-- Function Dev-Note: ***This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract. For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (buyFees * 100/ (10 ** basisPoint)).***
-
-<br>
-<br>
-
-#### Sell Fees
-- Function Name: ***sellFees***
-- Function Type: ***READ***
-- Function Description: ***Returns the sell fees of the contract.***
-- Function Requirements: ***`-nil-`***
-- Function Parameters: ***`-nil-`***
-- Function Return: 
-  - return[0]: ***[@type: `uint256]`***
-- Function Signature: 
-```
-sellFees()
+approve(address spender, uint256 amount)
 ```
 - Function Dev-Note: ***This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract. For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a withdraw fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
 
