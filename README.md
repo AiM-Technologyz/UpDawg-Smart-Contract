@@ -355,12 +355,14 @@ sellFees()
 
 <br>
 <br>
-<br>
 <hr>
+<br>
 <br>
 
 Every function will be executed by using the TronLink extension directly from the official [TRON Blockchain Explorer website](https://tronscan.org/#/), protected by TLS. TRON blockchain native token (TRX) will be used for implementing UpDAWG operations. Generally fee will be less than 40 TRX and can be laid down to 0 TRX if the user has sufficient Energy & bandwidth available.
 
+<br>
+<br>
 <br>
 <br>
 
