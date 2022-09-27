@@ -43,7 +43,7 @@
    - [Name](#name)
    - [Symbol](#symbol)
    - [Decimals](#decimals)
-   - [Symbol](#symbol)
+   - [Circulating Supply](#circulating-supply)
 
 <br>
 <br>
