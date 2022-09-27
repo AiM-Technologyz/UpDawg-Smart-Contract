@@ -447,7 +447,7 @@ transfer(address recipient, uint256 amount)
 <br>
 
 #### Transfer From
-- Function Name: ***transfer***
+- Function Name: ***transferFrom***
 - Function Type: ***WRITE***
 - Function Description: ***Moves `amount` tokens from the caller's account to `recipient`. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.***
 - Function Requirements: 
@@ -461,7 +461,7 @@ transfer(address recipient, uint256 amount)
   - return[0]: ***[@type: `bool`]***
 - Function Signature: 
 ```
-transfer(address recipient, uint256 amount)
+transferFrom(address sender, address recipient, uint256 amount)
 ```
 
 <br>
