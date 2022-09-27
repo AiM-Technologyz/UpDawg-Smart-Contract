@@ -30,7 +30,7 @@ contract TRC20Hodl {
     **************************************************************/
 
     /**
-     * @dev Returns the amount of hodler pool tokens in existence.
+     * @dev Returns the total amount of tokens in hodler pool tokens of the contract.
      */
     function hodlSupply() public view returns (uint256) {
         return _hodlSupply;
