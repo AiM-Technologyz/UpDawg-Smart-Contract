@@ -308,7 +308,7 @@ reserve()
 #### Basis Point
 - Function Name: ***basisPoint***
 - Function Type: ***READ***
-- Function Description: ***Returns the number of basis Points used by the contract as ratio representation. For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).***
+- Function Description: ***Returns the number of basis Points used by the contract as ratio representation.***
 - Function Requirements: ***`-nil-`***
 - Function Parameters: ***`-nil-`***
 - Function Return: 
@@ -317,7 +317,7 @@ reserve()
 ```
 basisPoint()
 ```
-- Function Dev-Note: ***basisPoint***
+- Function Dev-Note: ***For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).***
 
 <br>
 <br>
