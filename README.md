@@ -395,7 +395,7 @@ prevClaimOf(address account)
 #### Approve
 - Function Name: ***approve***
 - Function Type: ***WRITE***
-- Function Description: ***Sets `amount` as the allowance of `spender` over the caller's tokens.***
+- Function Description: ***Sets `amount` as the allowance of `spender` over the caller's tokens. Returns a boolean value indicating whether the operation succeeded.***
 - Function Requirements: ***`-nil-`***
 - Function Parameters: 
   - param1: ***[`spender`][@type: `address`]***
