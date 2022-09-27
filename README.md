@@ -2,7 +2,12 @@
 
 <br>
 <br>
+<br>
+<br>
+<br>
+
 <hr>
+
 <br>
 <br>
 <br>
@@ -18,7 +23,10 @@
 <br>
 <br>
 <br>
+
 <hr>
+
+<br>
 <br>
 <br>
 <br>
@@ -382,7 +390,12 @@ To ensure no chance of scam or security risk, the **UpDawg Smart Contract** will
 
 <br>
 <br>
+<br>
+<br>
+<br>
+
 <hr>
+
 <br>
 <br>
 <br>
@@ -398,7 +411,10 @@ To ensure no chance of scam or security risk, the **UpDawg Smart Contract** will
 <br>
 <br>
 <br>
+
 <hr>
+
+<br>
 <br>
 <br>
 <br>
