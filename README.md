@@ -186,7 +186,7 @@ balanceOf(address account)
 #### Circulating Supply
 - Function Name: ***circulatingSupply***
 - Function Type: ***READ***
-- Function Description: ***This function returns the amount of tokens owned by the specific `account`.***
+- Function Description: ***Returns the sum of amount of tokens in contract-user's accounts.***
 - Function Requirements: ***`-nil-`***
 - Function Parameters: 
   - param1: ***[`account`][@type: `address`]***
