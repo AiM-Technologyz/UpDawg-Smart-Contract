@@ -449,19 +449,40 @@ transfer(address recipient, uint256 amount)
 #### Transfer From
 - Function Name: ***transferFrom***
 - Function Type: ***WRITE***
-- Function Description: ***Moves `amount` tokens from `sender` to `recipient` using the allowance mechanism. `amount` is then deducted from the caller's allowance. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.***
+- Function Description: ***Moves `amount` tokens from `sender` to `recipient` using the `allowance` mechanism. `amount` is then deducted from the caller's allowance. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.***
 - Function Requirements: 
-  - ***`caller` cannot be the zero address.***
+  - ***`sender` cannot be the zero address.***
   - ***`recipient` cannot be the zero address.***
-  - ***`caller` must have a balance of at least `amount`.***
+  - ***`sender` must have a balance of at least `amount`.***
+  - ***`caller` must have an allowance of at least `amount`.***
 - Function Parameters: 
-  - param1: ***[`recipient`][@type: `address`]***
-  - param2: ***[`amount`][@type: `uint256`]***
+  - param1: ***[`sender`][@type: `address`]***
+  - param2: ***[`recipient`][@type: `address`]***
+  - param3: ***[`amount`][@type: `uint256`]***
 - Function Return: 
   - return[0]: ***[@type: `bool`]***
 - Function Signature: 
 ```
 transferFrom(address sender, address recipient, uint256 amount)
+```
+
+<br>
+<br>
+
+#### Burn
+- Function Name: ***burn***
+- Function Type: ***WRITE***
+- Function Description: ***Destroys `amount` tokens from `account`, reducing the total supply. Emits a {Transfer} event with `to` set to the zero address.***
+- Function Requirements: 
+  - ***`caller` cannot be the zero address.***
+  - ***`sender` must have a balance of at least `amount`.***
+- Function Parameters: 
+  - param1: ***[`amount`][@type: `uint256`]***
+- Function Return: 
+  - return[0]: ***[@type: `bool`]***
+- Function Signature: 
+```
+burn(uint256 amount)
 ```
 
 <br>

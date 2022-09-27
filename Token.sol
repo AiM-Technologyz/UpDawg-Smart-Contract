@@ -123,9 +123,9 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
      *
      * Emits a {Transfer} event with `to` set to the zero address.
      */
-    function burn(uint256 value) public returns (bool) {
+    function burn(uint256 amount) public returns (bool) {
         _claimReward(_msgSender());
-        _burn(_msgSender(), value);
+        _burn(_msgSender(), amount);
         return true;
     }
 
