@@ -138,14 +138,6 @@ contract TRC20 is Ownable, ITRC20 {
         return true;
     }
 
-     /**
-     * @dev Destroys `amount` tokens from `account`, reducing the
-     * total supply.
-     *
-     * Emits a {Transfer} event with `to` set to the zero address.
-     */
-    function burn(uint256 value) public returns (bool);
-
     /**
      * @dev Moves tokens `amount` from `sender` to `recipient`.
      *
