@@ -382,7 +382,7 @@ allowance(address owner, address spender)
 - Function Parameters: 
   - param1: ***[`account`][@type: `address`]***
 - Function Return: 
-  - return[0]: ***[@type: `uint256]`***
+  - return[0]: ***[@type: `uint256`]***
 - Function Signature: 
 ```
 prevClaimOf(address account)
@@ -401,7 +401,7 @@ prevClaimOf(address account)
   - param1: ***[`spender`][@type: `address`]***
   - param2: ***[`amount`][@type: `uint256`]***
 - Function Return: 
-  - return[0]: ***[@type: `uint256]`***
+  - return[0]: ***[@type: `bool`]***
 - Function Signature: 
 ```
 approve(address spender, uint256 amount)
