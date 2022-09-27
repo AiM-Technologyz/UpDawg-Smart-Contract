@@ -220,7 +220,7 @@ hodlSupply()
 #### Total Supply
 - Function Name: ***totalSupply***
 - Function Type: ***READ***
-- Function Description: ***Returns the sellFees of the contract. For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a withdraw fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
+- Function Description: ***Returns the total amount of tokens in existence. This is the sum of `circulatingSupply` & `hodlSupply`***
 - Function Requirements: ***`-nil-`***
 - Function Parameters: ***`-nil-`***
 - Function Return: 
@@ -325,7 +325,7 @@ basisPoint()
 #### Buy Fees
 - Function Name: ***buyFees***
 - Function Type: ***READ***
-- Function Description: ***Returns the buyFees of the contract. For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (buyFees * 100/ (10 ** basisPoint)).***
+- Function Description: ***Returns the buyFees of the contract.***
 - Function Requirements: ***`-nil-`***
 - Function Parameters: ***`-nil-`***
 - Function Return: 
@@ -334,7 +334,7 @@ basisPoint()
 ```
 buyFees()
 ```
-- Function Dev-Note: ***buyFees***
+- Function Dev-Note: ***For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (buyFees * 100/ (10 ** basisPoint)).***
 
 <br>
 <br>
@@ -342,7 +342,7 @@ buyFees()
 #### Sell Fees
 - Function Name: ***sellFees***
 - Function Type: ***READ***
-- Function Description: ***Returns the sellFees of the contract. For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a withdraw fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
+- Function Description: ***Returns the sell fees of the contract.***
 - Function Requirements: ***`-nil-`***
 - Function Parameters: ***`-nil-`***
 - Function Return: 
@@ -351,7 +351,7 @@ buyFees()
 ```
 sellFees()
 ```
-- Function Dev-Note: ***sellFees***
+- Function Dev-Note: ***For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a withdraw fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
 
 <br>
 <br>
