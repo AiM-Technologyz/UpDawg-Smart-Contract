@@ -49,6 +49,9 @@
    - [Reserve](#reserve)
    - [Claim Period](#claim-period)
    - [Basis Points](#basis-point)
+   - [Buy Fees](#buy-fees)
+   - [Sell Fees](#sell-fees)
+   - [Decimals](#decimals)
 
 <br>
 <br>
