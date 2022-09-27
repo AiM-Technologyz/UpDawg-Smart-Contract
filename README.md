@@ -222,7 +222,7 @@ allowance(address owner, address spender)
 #### HODL Supply
 - Function Name: ***hodlSupply***
 - Function Type: ***READ***
-- Function Description: ***Returns the total amount of tokens in hodler pool tokens of the contract.***
+- Function Description: ***Returns the total amount of tokens in hodler pool of the contract.***
 - Function Requirements: ***`-nil-`***
 - Function Parameters: ***`-nil-`***
 - Function Return: 
