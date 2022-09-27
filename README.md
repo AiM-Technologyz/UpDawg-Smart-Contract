@@ -430,9 +430,30 @@ approve(address spender, uint256 amount)
 - Function Type: ***WRITE***
 - Function Description: ***Moves `amount` tokens from the caller's account to `recipient`. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.***
 - Function Requirements: 
-  - ***`owner` cannot be the zero address.***
+  - ***`caller` cannot be the zero address.***
   - ***`recipient` cannot be the zero address.***
-  - ***`sender` must have a balance of at least `amount`.***
+  - ***`caller` must have a balance of at least `amount`.***
+- Function Parameters: 
+  - param1: ***[`recipient`][@type: `address`]***
+  - param2: ***[`amount`][@type: `uint256`]***
+- Function Return: 
+  - return[0]: ***[@type: `bool`]***
+- Function Signature: 
+```
+transfer(address recipient, uint256 amount)
+```
+
+<br>
+<br>
+
+#### Transfer From
+- Function Name: ***transfer***
+- Function Type: ***WRITE***
+- Function Description: ***Moves `amount` tokens from the caller's account to `recipient`. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.***
+- Function Requirements: 
+  - ***`caller` cannot be the zero address.***
+  - ***`recipient` cannot be the zero address.***
+  - ***`caller` must have a balance of at least `amount`.***
 - Function Parameters: 
   - param1: ***[`recipient`][@type: `address`]***
   - param2: ***[`amount`][@type: `uint256`]***
