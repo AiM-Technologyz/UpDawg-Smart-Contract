@@ -477,7 +477,7 @@ transferFrom(address sender, address recipient, uint256 amount)
 - Function Description: ***Destroys `amount` tokens from `account`, reducing the total supply. Emits a {Transfer} event with `to` set to the zero address.***
 - Function Requirements: 
   - ***`caller` cannot be the zero address.***
-  - ***`sender` must have a balance of at least `amount`.***
+  - ***`caller` must have a balance of at least `amount`.***
 - Function Parameters: 
   - param1: ***[`amount`][@type: `uint256`]***
 - Function Return: 
