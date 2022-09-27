@@ -236,7 +236,7 @@ hodlSupply()
 <br>
 <br>
 
-#### HODL Supply
+#### Claim Period
 - Function Name: ***claimPeriod***
 - Function Type: ***READ***
 - Function Description: ***Returns the base time period for claim rewards.***
@@ -249,6 +249,120 @@ hodlSupply()
 claimPeriod()
 ```
 - Function Dev-Note: ***claimPeriod***
+
+<br>
+<br>
+
+#### Previous Claim Of
+- Function Name: ***prevClaimOf***
+- Function Type: ***READ***
+- Function Description: ***Returns the timestamp of previous claim rewards of `account`.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+prevClaimOf()
+```
+- Function Dev-Note: ***prevClaimOf***
+
+<br>
+<br>
+
+#### Reserve
+- Function Name: ***reserve***
+- Function Type: ***READ***
+- Function Description: ***Returns the amount of asset tokens in the contracts reserve.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+reserve()
+```
+- Function Dev-Note: ***reserve***
+
+<br>
+<br>
+
+#### Basis Point
+- Function Name: ***basisPoint***
+- Function Type: ***READ***
+- Function Description: ***Returns the number of basis Points used by the contract as ratio representation.
+     * For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a
+     * deposit fee of 2.5% (per cent or percentage) and should
+     * be displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+basisPoint()
+```
+- Function Dev-Note: ***basisPoint***
+
+<br>
+<br>
+
+#### Buy Fees
+- Function Name: ***buyFees***
+- Function Type: ***READ***
+- Function Description: ***Returns the buyFees of the contract.
+     * For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a
+     * deposit fee of 2.5% (per cent or percentage) and should
+     * be displayed to a user as `2.5%` by the formula (buyFees * 100/ (10 ** basisPoint)).***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+buyFees()
+```
+- Function Dev-Note: ***buyFees***
+
+<br>
+<br>
+
+#### Sell Fees
+- Function Name: ***sellFees***
+- Function Type: ***READ***
+- Function Description: ***Returns the sellFees of the contract.
+     * For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a
+     * withdraw fee of 2.5% (per cent or percentage) and should
+     * be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+sellFees()
+```
+- Function Dev-Note: ***sellFees***
+
+<br>
+<br>
+
+#### Total Supply
+- Function Name: ***totalSupply***
+- Function Type: ***READ***
+- Function Description: ***Returns the sellFees of the contract.
+     * For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a
+     * withdraw fee of 2.5% (per cent or percentage) and should
+     * be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+totalSupply()
+```
+- Function Dev-Note: ***totalSupply***
 
 <br>
 <br>
