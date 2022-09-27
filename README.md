@@ -33,7 +33,7 @@
 <br>
 
 ## Table of Contents
-- [What is UpDawg?](https://github.com/AiM-Technologyz/UpDawg-Smart-Contract#what-is-updawg)
+- [What is UpDawg?](#what-is-updawg)
 
 <br>
 <br>
