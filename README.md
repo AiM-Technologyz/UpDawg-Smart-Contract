@@ -41,6 +41,9 @@
 6. [Fee Schedule](#fee-schedule)
 7. [Functions](#functions)
    - [Name](#name)
+   - [Symbol](#symbol)
+   - [Decimals](#decimals)
+   - [Symbol](#symbol)
 
 <br>
 <br>
@@ -198,24 +201,6 @@ decimals()
 <br>
 <br>
 
-#### Balance Of
-- Function Name: ***balanceOf***
-- Function Type: ***READ***
-- Function Description: ***This function returns the amount of tokens owned by the specific `account`.***
-- Function Requirements: ***`-nil-`***
-- Function Parameters: 
-  - param1: ***[`account`][@type: `address`]***
-- Function Return: 
-  - return[0]: ***[@type: `uint256]`***
-- Function Signature: 
-```
-balanceOf(address account)
-```
-- Function Dev-Note: ***balanceOf***
-
-<br>
-<br>
-
 #### Circulating Supply
 - Function Name: ***circulatingSupply***
 - Function Type: ***READ***
@@ -263,6 +248,24 @@ hodlSupply()
 totalSupply()
 ```
 - Function Dev-Note: ***totalSupply***
+
+<br>
+<br>
+
+#### Balance Of
+- Function Name: ***balanceOf***
+- Function Type: ***READ***
+- Function Description: ***This function returns the amount of tokens owned by the specific `account`.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: 
+  - param1: ***[`account`][@type: `address`]***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+balanceOf(address account)
+```
+- Function Dev-Note: ***balanceOf***
 
 <br>
 <br>
