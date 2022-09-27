@@ -395,7 +395,7 @@ prevClaimOf(address account)
 #### Approve
 - Function Name: ***approve***
 - Function Type: ***WRITE***
-- Function Description: ***Sets `amount` as the allowance of `spender` over the caller's tokens. Returns a boolean value indicating whether the operation succeeded.***
+- Function Description: ***Sets `amount` as the allowance of `spender` over the caller's tokens. Returns a boolean value indicating whether the operation succeeded. Emits an {Approval} event.***
 - Function Requirements: 
   - ***`owner` cannot be the zero address.***
   - ***`spender` cannot be the zero address.***
@@ -408,7 +408,7 @@ prevClaimOf(address account)
 ```
 approve(address spender, uint256 amount)
 ```
-- Function Dev-Note: ***This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract. For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a withdraw fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
+- Function Dev-Note: ***IMPORTANT: Beware that changing an allowance with this method brings the risk that someone may use both the old and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards: https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729***
 
 <br>
 <br>
