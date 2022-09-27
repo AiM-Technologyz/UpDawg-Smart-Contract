@@ -33,9 +33,9 @@
 <br>
 
 ## Table of Contents
-- [What is UpDawg?](#what-is-updawg)
-- [Technology](#technology)
-- [Launchpad](#launchpad)
+1. [What is UpDawg?](#what-is-updawg)
+2. [Technology](#technology)
+3. [Launchpad](#launchpad)
 
 <br>
 <br>
