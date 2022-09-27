@@ -55,6 +55,7 @@
    - [Allowance](#allowance)
    - [Previous Claim Of](#previous-claim-of)
    - [Approve](#approve)
+   - [Transfer](#transfer)
 
 <br>
 <br>
