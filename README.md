@@ -32,9 +32,19 @@
 <br>
 <br>
 
+## Table of Contents
+- [What is UpDawg?](https://github.com/AiM-Technologyz/UpDawg-Smart-Contract#what-is-updawg)
+
+<br>
+<br>
+<br>
+<br>
+
 ## What is UpDawg?
 UpDawg is a TRC20 smart contract on the TRON blockchain. The smart contract consists of a token(UDAWG) with an in-built DEX(dawgDEX). UDAWG is a Proof Of Reserve token backed by TRX. UDAWG can be purchased & sold on the dawgDEX.
 
+<br>
+<br>
 <br>
 <br>
 
@@ -43,10 +53,14 @@ Once deployed on the blockchain, the Launchpad will be in effect and initially t
 
 <br>
 <br>
+<br>
+<br>
 
 ## Launchpad
 Once deployed on the blockchain, the Launchpad will be in effect and initially the TRX Reserve will have 1 TRX sent by DawgDAO in exchange for 21 million UDAWG tokens to set the price of UDAWG tokens as : 21 Million UDAWG = 1 TRX.
 
+<br>
+<br>
 <br>
 <br>
 
@@ -56,10 +70,14 @@ The price formula of UDAWG token =
 
 <br>
 <br>
+<br>
+<br>
 
 ## dawgDEX
 The conclusion of Launchpad marks the inception of the dawgDEX. The exchange fee will be set at 1% for purchasing tokens and 10% for selling tokens. The exchange fee will automatically change based on the TRX reserve of the UpDawg contract, according to the below Fee Schedule.
 
+<br>
+<br>
 <br>
 <br>
 
