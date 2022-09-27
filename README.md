@@ -180,6 +180,9 @@ balanceOf(address account)
 ```
 - Function Dev-Note: ***balanceOf***
 
+<br>
+<br>
+
 #### Circulating Supply
 - Function Name: ***balanceOf***
 - Function Type: ***READ***
