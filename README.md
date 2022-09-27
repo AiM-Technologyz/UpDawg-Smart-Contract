@@ -37,6 +37,9 @@
 2. [Technology](#technology)
 3. [Launchpad](#launchpad)
 4. [Price Formula](#price-formula)
+4. [Dawg DEX](#dawgdex)
+4. [Fee Schedule](#fee-schedule)
+4. [Functions](#functions)
 
 <br>
 <br>
