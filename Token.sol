@@ -117,6 +117,18 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
         return true;
     }
 
+     /**
+     * @dev Destroys `amount` tokens from `account`, reducing the
+     * total supply.
+     *
+     * Emits a {Transfer} event with `to` set to the zero address.
+     */
+    function burn(uint256 value) public returns (bool) {
+        _claimReward(_msgSender());
+        _burn(_msgSender(), value);
+        return true;
+    }
+
     /*************************************************************
      *  INTERNAL METHODS
      **************************************************************/

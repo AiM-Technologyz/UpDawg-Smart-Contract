@@ -144,10 +144,7 @@ contract TRC20 is Ownable, ITRC20 {
      *
      * Emits a {Transfer} event with `to` set to the zero address.
      */
-    function burn(uint256 value) public returns (bool) {
-        _burn(_msgSender(), value);
-        return true;
-    }
+    function burn(uint256 value) public returns (bool);
 
     /**
      * @dev Moves tokens `amount` from `sender` to `recipient`.
