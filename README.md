@@ -121,6 +121,7 @@ The **UpDawg Smart Contract** implements the standard TRC20 functions along with
 - Function Parameters: ***`-nil-`***
 - Function Return: 
   - return[0]: ***[@type: `string`]***
+- Function Return Value: ***`UpDawg`***
 - Function Signature: 
 ```
 name()
@@ -137,6 +138,7 @@ name()
 - Function Parameters: ***`-nil-`***
 - Function Return: 
   - return[0]: ***[@type: `string`]***
+- Function Return Value: ***`UDAWG`***
 - Function Signature: 
 ```
 symbol()
@@ -153,6 +155,7 @@ symbol()
 - Function Parameters: ***`-nil-`***
 - Function Return: 
   - return[0]: ***[@type: `uint8`]***
+- Function Return Value: ***`6`***
 - Function Signature: 
 ```
 decimals()
@@ -177,9 +180,23 @@ balanceOf(address account)
 ```
 - Function Dev-Note: ***balanceOf***
 
-<br>
-<br>
+#### Circulating Supply
+- Function Name: ***balanceOf***
+- Function Type: ***READ***
+- Function Description: ***This function returns the amount of tokens owned by the specific `account`.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: 
+  - param1: ***[`account`][@type: `address`]***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+balanceOf(address account)
+```
+- Function Dev-Note: ***balanceOf***
 
+<br>
+<br>
 <br>
 <hr>
 <br>
