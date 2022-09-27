@@ -108,7 +108,7 @@ The Transaction Fee Distribution is as follows :
 <br>
 
 ## Functions
-The **UpDawg Smart Contract** implements the standard TRC20 functions along with the following additional functions :
+The **UpDawg Smart Contract** implements the following functions :
 
 <br>
 <br>
