@@ -40,6 +40,7 @@
 5. [Dawg DEX](#dawgdex)
 6. [Fee Schedule](#fee-schedule)
 7. [Functions](#functions)
+   - [Name](#name)
 
 <br>
 <br>
