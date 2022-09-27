@@ -188,8 +188,7 @@ balanceOf(address account)
 - Function Type: ***READ***
 - Function Description: ***Returns the sum of amount of tokens in contract-user's accounts.***
 - Function Requirements: ***`-nil-`***
-- Function Parameters: 
-  - param1: ***[`account`][@type: `address`]***
+- Function Parameters: ***`-nil-`***
 - Function Return: 
   - return[0]: ***[@type: `uint256]`***
 - Function Signature: 
