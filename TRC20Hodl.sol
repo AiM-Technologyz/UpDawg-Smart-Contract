@@ -37,7 +37,7 @@ contract TRC20Hodl {
     }
 
     /**
-     * @dev Returns the base period for claim rewards.
+     * @dev Returns the base time period for claim rewards.
      */
     function claimPeriod() public view returns (uint256) {
         return CLAIM_PERIOD;
