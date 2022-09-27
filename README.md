@@ -412,6 +412,28 @@ approve(address spender, uint256 amount)
 
 <br>
 <br>
+
+#### Transfer
+- Function Name: ***transfer***
+- Function Type: ***WRITE***
+- Function Description: ***Moves `amount` tokens from the caller's account to `recipient`. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.***
+- Function Requirements: 
+  - ***`owner` cannot be the zero address.***
+  - ***`recipient` cannot be the zero address.***
+  - ***`sender` must have a balance of at least `amount`.***
+- Function Parameters: 
+  - param1: ***[`recipient`][@type: `address`]***
+  - param2: ***[`amount`][@type: `uint256`]***
+- Function Return: 
+  - return[0]: ***[@type: `bool`]***
+- Function Signature: 
+```
+transfer(address recipient, uint256 amount)
+```
+- Function Dev-Note: ***IMPORTANT: Beware that changing an allowance with this method brings the risk that someone may use both the old and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards: https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729***
+
+<br>
+<br>
 <hr>
 <br>
 <br>
