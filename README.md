@@ -449,7 +449,7 @@ transfer(address recipient, uint256 amount)
 #### Transfer From
 - Function Name: ***transferFrom***
 - Function Type: ***WRITE***
-- Function Description: ***Moves `amount` tokens from the caller's account to `recipient`. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.***
+- Function Description: ***Moves `amount` tokens from `sender` to `recipient` using the allowance mechanism. `amount` is then deducted from the caller's allowance. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.***
 - Function Requirements: 
   - ***`caller` cannot be the zero address.***
   - ***`recipient` cannot be the zero address.***
