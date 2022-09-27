@@ -184,7 +184,7 @@ balanceOf(address account)
 <br>
 
 #### Circulating Supply
-- Function Name: ***balanceOf***
+- Function Name: ***circulatingSupply***
 - Function Type: ***READ***
 - Function Description: ***This function returns the amount of tokens owned by the specific `account`.***
 - Function Requirements: ***`-nil-`***
@@ -194,9 +194,9 @@ balanceOf(address account)
   - return[0]: ***[@type: `uint256]`***
 - Function Signature: 
 ```
-balanceOf(address account)
+circulatingSupply()
 ```
-- Function Dev-Note: ***balanceOf***
+- Function Dev-Note: ***circulatingSupply***
 
 <br>
 <br>
