@@ -44,6 +44,8 @@
    - [Symbol](#symbol)
    - [Decimals](#decimals)
    - [Circulating Supply](#circulating-supply)
+   - [HODL Supply](#hodl-supply)
+   - [Total Supply](#total-supply)
 
 <br>
 <br>
