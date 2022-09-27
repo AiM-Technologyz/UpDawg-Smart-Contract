@@ -200,6 +200,23 @@ circulatingSupply()
 <br>
 <br>
 
+#### HODL Supply
+- Function Name: ***hodlSupply***
+- Function Type: ***READ***
+- Function Description: ***Returns the total amount of tokens in hodler pool of the contract.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+hodlSupply()
+```
+- Function Dev-Note: ***hodlSupply***
+
+<br>
+<br>
+
 #### Allowance
 - Function Name: ***allowance***
 - Function Type: ***READ***
@@ -215,23 +232,6 @@ circulatingSupply()
 allowance(address owner, address spender)
 ```
 - Function Dev-Note: ***allowance***
-
-<br>
-<br>
-
-#### HODL Supply
-- Function Name: ***hodlSupply***
-- Function Type: ***READ***
-- Function Description: ***Returns the total amount of tokens in hodler pool of the contract.***
-- Function Requirements: ***`-nil-`***
-- Function Parameters: ***`-nil-`***
-- Function Return: 
-  - return[0]: ***[@type: `uint256]`***
-- Function Signature: 
-```
-hodlSupply()
-```
-- Function Dev-Note: ***hodlSupply***
 
 <br>
 <br>
@@ -256,14 +256,15 @@ claimPeriod()
 #### Previous Claim Of
 - Function Name: ***prevClaimOf***
 - Function Type: ***READ***
-- Function Description: ***Returns the timestamp of previous claim rewards of `account`.***
+- Function Description: ***Returns the timestamp of previous call to `claimRewards` of `account`.***
 - Function Requirements: ***`-nil-`***
-- Function Parameters: ***`-nil-`***
+- Function Parameters: 
+  - param1: ***[`account`][@type: `address`]***
 - Function Return: 
   - return[0]: ***[@type: `uint256]`***
 - Function Signature: 
 ```
-prevClaimOf()
+prevClaimOf(address account)
 ```
 - Function Dev-Note: ***prevClaimOf***
 

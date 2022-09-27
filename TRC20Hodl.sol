@@ -44,7 +44,7 @@ contract TRC20Hodl {
     }
     
     /**
-     * @dev Returns the timestamp of previous claim rewards of `account`.
+     * @dev Returns the timestamp of previous call to `claimRewards` of `account`.
      */
     function prevClaimOf(address account) public view returns (uint256) {
         return _prevClaim[account];
