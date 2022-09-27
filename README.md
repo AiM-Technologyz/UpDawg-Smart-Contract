@@ -218,6 +218,23 @@ allowance(address owner, address spender)
 
 <br>
 <br>
+
+#### HODL Supply
+- Function Name: ***hodlSupply***
+- Function Type: ***READ***
+- Function Description: ***Returns the amount of hodler pool tokens in existence.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+hodlSupply()
+```
+- Function Dev-Note: ***hodlSupply***
+
+<br>
+<br>
 <br>
 <hr>
 <br>
