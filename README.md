@@ -51,6 +51,9 @@
    - [Basis Points](#basis-point)
    - [Buy Fees](#buy-fees)
    - [Sell Fees](#sell-fees)
+   - [Balance Of](#balance-of)
+   - [Allowance](#allowance)
+   - [Symbol](#symbol)
    - [Decimals](#decimals)
 
 <br>
