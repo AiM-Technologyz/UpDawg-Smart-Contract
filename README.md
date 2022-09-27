@@ -46,6 +46,9 @@
    - [Circulating Supply](#circulating-supply)
    - [HODL Supply](#hodl-supply)
    - [Total Supply](#total-supply)
+   - [Reserve](#reserve)
+   - [Claim Period](#claim-period)
+   - [Basis Points](#basis-point)
 
 <br>
 <br>
