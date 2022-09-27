@@ -62,7 +62,7 @@ The Transaction Fee Distribution is as follows :
   - ***1% Deposit Fee;***
   - ***10% Withdraw Fee;***
 
-- 1 TRX <= Reserve < 10 TRX     :
+- ***1 TRX <= `Reserve` < 10 TRX     :***
   - ***0.9% Deposit Fee;***
   - ***9% Withdraw Fee;***
 
