@@ -397,7 +397,9 @@ prevClaimOf(address account)
 - Function Type: ***WRITE***
 - Function Description: ***Sets `amount` as the allowance of `spender` over the caller's tokens.***
 - Function Requirements: ***`-nil-`***
-- Function Parameters: ***`-nil-`***
+- Function Parameters: 
+  - param1: ***[`spender`][@type: `address`]***
+  - param2: ***[`amount`][@type: `uint256`]***
 - Function Return: 
   - return[0]: ***[@type: `uint256]`***
 - Function Signature: 
