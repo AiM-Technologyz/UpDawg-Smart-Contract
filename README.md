@@ -317,7 +317,7 @@ reserve()
 ```
 basisPoint()
 ```
-- Function Dev-Note: ***For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).***
+- Function Dev-Note: ***This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract. For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (FeePoints * 100/ (10 ** basisPoint)).***
 
 <br>
 <br>
@@ -334,7 +334,7 @@ basisPoint()
 ```
 buyFees()
 ```
-- Function Dev-Note: ***For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (buyFees * 100/ (10 ** basisPoint)).***
+- Function Dev-Note: ***This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract. For example, if `basisPoint` equals `3`, a `buyFees` of `25` represents a deposit fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (buyFees * 100/ (10 ** basisPoint)).***
 
 <br>
 <br>
@@ -351,7 +351,7 @@ buyFees()
 ```
 sellFees()
 ```
-- Function Dev-Note: ***For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a withdraw fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
+- Function Dev-Note: ***This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract. For example, if `basisPoint` equals `3`, a `sellFees` of `25` represents a withdraw fee of 2.5% (per cent or percentage) and should be displayed to a user as `2.5%` by the formula (sellFees * 100/ (10 ** basisPoint)).***
 
 <br>
 <br>
