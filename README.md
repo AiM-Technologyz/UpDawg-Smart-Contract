@@ -269,6 +269,23 @@ reserve()
 <br>
 <br>
 
+#### Claim Period
+- Function Name: ***claimPeriod***
+- Function Type: ***READ***
+- Function Description: ***Returns the base time period for claim rewards.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+claimPeriod()
+```
+- Function Dev-Note: ***claimPeriod***
+
+<br>
+<br>
+
 #### Basis Point
 - Function Name: ***basisPoint***
 - Function Type: ***READ***
@@ -353,23 +370,6 @@ balanceOf(address account)
 allowance(address owner, address spender)
 ```
 - Function Dev-Note: ***allowance***
-
-<br>
-<br>
-
-#### Claim Period
-- Function Name: ***claimPeriod***
-- Function Type: ***READ***
-- Function Description: ***Returns the base time period for claim rewards.***
-- Function Requirements: ***`-nil-`***
-- Function Parameters: ***`-nil-`***
-- Function Return: 
-  - return[0]: ***[@type: `uint256]`***
-- Function Signature: 
-```
-claimPeriod()
-```
-- Function Dev-Note: ***claimPeriod***
 
 <br>
 <br>
