@@ -199,6 +199,25 @@ circulatingSupply()
 
 <br>
 <br>
+
+#### Allowance
+- Function Name: ***allowance***
+- Function Type: ***READ***
+- Function Description: ***Returns the remaining number of tokens that `spender` will be allowed to spend on behalf of `owner` through {transferFrom}. This is zero by default. This value changes when {approve} or {transferFrom} are called.***
+- Function Requirements: ***`-nil-`***
+- Function Parameters: 
+  - param1: ***[`owner`][@type: `address`]***
+  - param2: ***[`spender`][@type: `address`]***
+- Function Return: 
+  - return[0]: ***[@type: `uint256]`***
+- Function Signature: 
+```
+allowance(address owner, address spender)
+```
+- Function Dev-Note: ***allowance***
+
+<br>
+<br>
 <br>
 <hr>
 <br>
