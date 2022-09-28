@@ -40,7 +40,7 @@
 5. [Dawg DEX](#dawgdex)
 6. [Fee Schedule](#fee-schedule)
 7. [Functions](#functions)
-   - READ FUNCTIONS
+   - [READ METHODS](#read-methods)
      - [Name](#name)
      - [Symbol](#symbol)
      - [Decimals](#decimals)
@@ -55,7 +55,7 @@
      - [Balance Of](#balance-of)
      - [Allowance](#allowance)
      - [Previous Claim Of](#previous-claim-of)
-   - WRITE FUNCTIONS
+   - [WRITE METHODS](#write-methods)
      - [Approve](#approve)
      - [Transfer](#transfer)
      - [Transfer From](#transfer-from)
@@ -161,6 +161,11 @@ The Transaction Fee Distribution is as follows :
 
 ## Functions
 The **UpDawg Smart Contract** implements the following functions :
+
+<br>
+<br>
+
+### READ METHODS
 
 <br>
 <br>
@@ -404,6 +409,11 @@ allowance(address owner, address spender)
 prevClaimOf(address account)
 ```
 - Function Dev-Note: ***prevClaimOf***
+
+<br>
+<br>
+
+### WRITE METHODS
 
 <br>
 <br>
