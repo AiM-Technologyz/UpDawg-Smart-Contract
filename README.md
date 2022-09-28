@@ -483,6 +483,23 @@ transferFrom(address sender, address recipient, uint256 amount)
 <br>
 <br>
 
+#### Claim Reward
+- Function Name: ***claimReward***
+- Function Type: ***WRITE***
+- Function Description: ***Moves `amount` tokens from `sender` to `recipient` using the `allowance` mechanism. `amount` is then deducted from the caller's allowance. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.***
+- Function Requirements: 
+  - ***`caller` cannot be the zero address.***
+- Function Parameters: ***`-nil-`***
+- Function Return: 
+  - return[0]: ***[@type: `bool`]***
+- Function Signature: 
+```
+claimReward()
+```
+
+<br>
+<br>
+
 #### Burn
 - Function Name: ***burn***
 - Function Type: ***WRITE***
@@ -497,6 +514,41 @@ transferFrom(address sender, address recipient, uint256 amount)
 - Function Signature: 
 ```
 burn(uint256 amount)
+```
+
+<br>
+<br>
+
+#### Buy
+- Function Name: ***buy***
+- Function Type: ***WRITE***
+- Function Description: ***Destroys `amount` tokens from `account`, reducing the total supply. Emits a {Transfer} event with `to` set to the zero address.***
+- Function Requirements: 
+  - ***`caller` cannot be the zero address.***
+- Function Parameters: 
+- Function Return: 
+  - return[0]: ***[@type: `bool`]***
+- Function Signature: 
+```
+buy()
+```
+
+<br>
+<br>
+
+#### Sell
+- Function Name: ***sell***
+- Function Type: ***WRITE***
+- Function Description: ***Destroys `amount` tokens from `account`, reducing the total supply. Emits a {Transfer} event with `to` set to the zero address.***
+- Function Requirements: 
+  - ***`caller` cannot be the zero address.***
+- Function Parameters: 
+  - param1: ***[`amount`][@type: `uint256`]***
+- Function Return: 
+  - return[0]: ***[@type: `bool`]***
+- Function Signature: 
+```
+sell(uint256 amount)
 ```
 
 <br>
