@@ -68,9 +68,6 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
      *  READ METHODS
     **************************************************************/
 
-    /**
-     * @dev See {ITRC20-totalSupply}.
-     */
     function totalSupply() public view returns (uint256) {
         return circulatingSupply().add(hodlSupply());
     }
@@ -79,9 +76,6 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
      *  WRITE METHODS
      **************************************************************/
 
-    /**
-     * @dev See {ITRC20-transfer}.
-     */
     function transfer(address recipient, uint256 amount) public returns (bool) {
         _claimReward(_msgSender());
         _claimReward(recipient);
@@ -89,9 +83,6 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
         return true;
     }
 
-    /**
-     * @dev See {ITRC20-transferFrom}.
-     */
     function transferFrom(address sender, address recipient, uint256 amount) public returns (bool) {
         _claimReward(sender);
         _claimReward(recipient);
@@ -100,17 +91,11 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
         return true;
     }
 
-    /**
-     * @dev See {ITRC20Hodl-claimReward}.
-     */
     function claimReward() public returns (bool) {
         _claimReward(_msgSender());
         return true;
     }
 
-    /**
-     * @dev See {ITRC20Hodl-donateReward}.
-     */
     function donateReward(uint256 amount) public returns (bool) {
         _burn(_msgSender(), amount);
         _mintHodl(amount);
@@ -133,9 +118,6 @@ contract StandardTokenWithHodl is StandardToken, TRC20Hodl {
      *  INTERNAL METHODS
      **************************************************************/
 
-    /**
-     * @dev See {ITRC20Hodl-claimReward}.
-     */
     function _claimReward(address account) internal {
         require(account != address(0), "ProofOfReserve: account is the zero address.");
 
@@ -191,27 +173,18 @@ contract PORToken is StandardTokenWithHodl, POR {
      *  WRITE METHODS
      **************************************************************/
 
-    /**
-     * @dev See {ITRC20Hodl-claimReward}.
-     */
     function airDropClaim() public onlyIfNotLaunched returns (bool) {
         _claimReward(_msgSender());
         _mint(_msgSender(), 21 * (10 ** 6) * (10 ** uint256(decimals())));
         return true;
     }
 
-    /**
-     * @dev See {IProofOfReserve-buy}.
-     */
     function buy() public payable onlyIfLaunched returns (bool) {
         _claimReward(_msgSender());
         _buy(_msgSender(), msg.value);
         return true;
     }
 
-    /**
-     * @dev See {IProofOfReserve-sell}.
-     */
     function sell(uint256 amount) public onlyIfLaunched returns (bool) {
         _claimReward(_msgSender());
         _sell(_msgSender(), amount);
