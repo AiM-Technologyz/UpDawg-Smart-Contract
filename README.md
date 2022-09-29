@@ -97,7 +97,7 @@ The price formula of UDAWG token is based on the simple weight expression.
 
 The price formula of UDAWG token =
 
-![Price Formula](/priceformula.png)
+![Price Formula](/assets/images/priceformula.png)
 
 <br>
 <br>
