@@ -60,6 +60,10 @@
      - [Transfer](#transfer)
      - [Transfer From](#transfer-from)
      - [Burn](#burn)
+     - [Buy](#buy)
+     - [Sell](#sell)
+     - [Claim Reward](#claim-reward)
+     - [Air Drop Claim](#air-drop-claim)
 
 <br>
 <br>
