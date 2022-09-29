@@ -451,7 +451,7 @@ approve(address spender, uint256 amount)
 - Function Requirements: 
   - ***`caller` cannot be the zero address.***
   - ***`recipient` cannot be the zero address.***
-  - ***`caller` must have a balance of at least `amount`.***
+  - ***`caller` must have a balance of at least `amount` tokens.***
 - Function Parameters: 
   - param1: ***[`recipient`][@type: `address`]***
   - param2: ***[`amount`][@type: `uint256`]***
@@ -528,7 +528,7 @@ claimReward()
 - Function Description: ***Destroys `amount` tokens from `account`, reducing the total supply. Emits a {Transfer} event with `to` set to the zero address.***
 - Function Requirements: 
   - ***`caller` cannot be the zero address.***
-  - ***`caller` must have a balance of at least `amount`.***
+  - ***`caller` must have a balance of at least `amount` tokens.***
 - Function Parameters: 
   - param1: ***[`amount`][@type: `uint256`]***
 - Function Return: 
