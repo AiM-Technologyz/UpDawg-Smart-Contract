@@ -98,6 +98,8 @@ The price formula of UDAWG token is based on the simple weight expression.
 The price formula of UDAWG token =
 (Total Supply of UDAWG Token) / (Total TRX in UpDawg Reserve)
 
+![Price Formula](/priceformula.png)
+
 <br>
 <br>
 <br>
