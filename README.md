@@ -67,7 +67,7 @@
 <br>
 
 ## What is UpDawg?
-UpDawg Smart Contract is a TRC20 contract on the TRON blockchain. The Smart Contract consists of a token (UDAWG) with an in-built DEX (dawgDEX). UDAWG is a Proof Of Reserve token backed by TRX. UDAWG can be purchased & sold on the dawgDEX.
+UpDawg Smart Contract is a TRC20 contract on the *TRON blockchain*. The Smart Contract consists of a token (UDAWG) with an in-built DEX (dawgDEX). UDAWG is a Proof Of Reserve token backed by TRX. UDAWG can be purchased & sold on the dawgDEX.
 
 <br>
 <br>
@@ -75,7 +75,7 @@ UpDawg Smart Contract is a TRC20 contract on the TRON blockchain. The Smart Cont
 <br>
 
 ## Technology
-Once deployed on the blockchain, the Launchpad will be in effect and initially the TRX Reserve will have 0.000001 TRX sent by DawgDAO in exchange for 21 UDAWG tokens to set the price of UDAWG tokens as : 1 TRX = 21 Million UDAWG.
+Once deployed on the *blockchain*, the Launchpad will be in effect and initially the TRX Reserve will have 0.000001 TRX sent by DawgDAO in exchange for 21 UDAWG tokens to set the price of UDAWG tokens as : 1 TRX = 21 Million UDAWG.
 
 <br>
 <br>
