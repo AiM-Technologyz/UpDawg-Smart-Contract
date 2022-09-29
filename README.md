@@ -67,7 +67,7 @@
 <br>
 
 ## What is UpDawg?
-UpDawg Smart Contract is a TRC20 contract on the TRON blockchain. The smart contract consists of a token (UDAWG) with an in-built DEX (dawgDEX). UDAWG is a Proof Of Reserve token backed by TRX. UDAWG can be purchased & sold on the dawgDEX.
+UpDawg Smart Contract is a TRC20 contract on the TRON blockchain. The Smart Contract consists of a token (UDAWG) with an in-built DEX (dawgDEX). UDAWG is a Proof Of Reserve token backed by TRX. UDAWG can be purchased & sold on the dawgDEX.
 
 <br>
 <br>
@@ -570,13 +570,13 @@ Every function will be executed by using the TronLink extension directly from th
 <br>
 
 ## Transparency
-The **UpDawg Smart Contract** manages the UDAWG token & the TRX reserve, ensuring a fully decentralised & trustless process. Contract owner can not interfere with the smart contract’s specifications except for 2 predetermined functions(updateBuyFee &updateSellFee), hard coded in the smart contract code, as the code is open source.
+The **UpDawg Smart Contract** manages the UDAWG token & the TRX reserve, ensuring a fully decentralised & trustless process. Contract owner can not interfere with the smart contract’s specifications except for 2 predetermined functions(updateBuyFee &updateSellFee), hard coded in the Smart Contract code, as the code is open source.
 
 <br>
 <br>
 
-There is no method in the **UpDawg Smart Contract** to withdraw the TRX Reserve or UDAWG HODLpool. The internal reserves in the smart contract is viewable to make sure token value is backed by the expected amount of collateral.
-To look into the reserve users can visit UpDAWG website or TRON blockchain explorer, as UpDAWG is an TRC20 smart contract all the reserves are on-chain.
+There is no method in the **UpDawg Smart Contract** to withdraw the TRX Reserve or UDAWG HODLpool. The internal reserves in the Smart Contract is viewable to make sure token value is backed by the expected amount of collateral.
+To look into the reserve users can visit UpDAWG website or TRON blockchain explorer, as UpDAWG is an TRC20 Smart Contract all the reserves are on-chain.
 
 <br>
 <br>
